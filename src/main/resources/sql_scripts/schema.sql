@@ -19,7 +19,7 @@
 DROP TABLE IF EXISTS employee;
 
 CREATE TABLE employee(
-   employee_id INT PRIMARY KEY     NOT NULL,
+   id INT PRIMARY KEY     NOT NULL,
    first_name           varchar(255)    NOT NULL,
    last_name            varchar(255)     NOT NULL,
    email        varchar(255)     NOT NULL

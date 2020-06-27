@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>EMS</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
 <body>
-<h1>Welcome to EMS- employee management system</h1>
-<h2>This is GUI section</h2>
+<h1>Employee Management system</h1>
+<h1>List of all employees</h1>
+<div class="container">
+    <div class="row w-100">
+        <div class="col-sm-12" th:replace="table :: table"></div>
 
+    </div>
+</div>
 </body>
 </html>
