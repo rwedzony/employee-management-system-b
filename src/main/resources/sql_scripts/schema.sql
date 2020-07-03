@@ -1,6 +1,3 @@
-
-
-
 -- create database for system
 -- drop if exist
 --DROP DATABASE ems;
@@ -18,15 +15,22 @@
 
 DROP TABLE IF EXISTS employee;
 
-CREATE TABLE employee(
-   id INT PRIMARY KEY     NOT NULL,
-   first_name           varchar(255)    NOT NULL,
-   last_name            varchar(255)     NOT NULL,
-   email        varchar(255)     NOT NULL
+CREATE TABLE employee
+(
+    id SERIAL  PRIMARY KEY,
+    first_name varchar(255)    NOT NULL,
+    last_name  varchar(255)    NOT NULL,
+    email      varchar(255)    NOT NULL,
+    role       varchar(255)    NOT NULL
 );
 
 -- fill employee table with sample data
 
-Insert into employee values ('1', 'Janina','Nowak','janinanowak@wp.pl');
-Insert into employee values ('2', 'Marek','Gladysz','marekgladysz@onet.pl');
-Insert into employee values ('3', 'Dominika','Paradowska','dominikaparadowska@interia.pl');
+Insert into employee (first_name, last_name, email, role)
+values ('Janina', 'Nowak', 'janinanowak@wp.pl', 'barista');
+Insert into employee (first_name, last_name, email, role)
+values ('Marek', 'Gladysz', 'marekgladysz@onet.pl', 'kitchen chef');
+Insert into employee (first_name, last_name, email, role)
+values ('Dominika', 'Paradowska', 'dominikaparadowska@interia.pl', 'cleaner');
+Insert into employee (first_name, last_name, email, role)
+values ('Marek', 'Jakubiak', 'marekJakubiak@interia.pl', 'barista');

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<body>
+
+<!--top bar-->
+<div th:replace="bar_footer/top_bar.html :: div.top-bar"></div>
+
+
+<!--Employe form-->
+
+<div class="container">
+<form action="#" th:action="@{/save}" th:object="${employee}" method="post">
+
+    <input type="text" th:field="*{id}">
+
+    <input type="text" class="form-control" th:field="*{firstName}" placeholder="First Name"><br>
+
+    <input type="text" class="form-control" th:field="*{lastName}" placeholder="Last Name"><br>
+
+    <input type="text" class="form-control" th:field="*{email}" placeholder="Email"><br>
+
+    <input type="text" class="form-control" th:field="*{role}" placeholder="role"><br>
+
+    <input type="submit" th:value="Save" class="btn btn-light">
+</form>
+</div>
+
+
+<!--footer-->
+<div th:replace="bar_footer/footer.html :: div.footer"></div>
+
+</body>
+</html>

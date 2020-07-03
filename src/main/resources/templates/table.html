@@ -1,23 +1,31 @@
-<div xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml" th:fragment="table">
-    <table>
+<div xmlns:th="www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml" th:fragment="table">
+    <table class="table">
         <thead>
         <tr>
-            <!-- <th>id</th>-->
-            <th>name</th>
-            <th>distance</th>
-            <th>description</th>
+             <th>id</th>
+            <th scope="col">name</th>
+            <th scope="col">surname</th>
+            <th scope="col">email</th>
+            <th scope="col">role</th>
+            <th scope="col">operations</th>
 
         </tr>
         </thead>
 
         <tbody>
         <tr th:each="e: ${employees}">
+            <td th:text="${e.getId()}"></td>
             <td th:text="${e.getFirstName()}"></td>
             <td th:text="${e.getLastName()}"></td>
             <td th:text="${e.getEmail()}"></td>
+            <td th:text="${e.getRole()}"></td>
+            <td>
+                <a class="btn btn-light" th:href="@{/edit}" role="button">Edit</a>
+                <a class="btn btn-light" th:href="@{/delete}" role="button">Delete</a>
+            </td>
         </tr>
         </tbody>
-
     </table>
+
 
 </div>
