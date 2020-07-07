@@ -6,9 +6,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.logging.Logger;
 
 
 @Controller
@@ -36,6 +37,19 @@ public class EmployeeController {
 
         employeeService.save(employee);
 
+        return "redirect:/";
+    }
+
+    @PostMapping(value = "/edit")
+    public ModelAndView edit(@RequestParam(value = "emp_id") int emp_id) {
+        Employee employee = employeeService.getById(emp_id);
+        return new ModelAndView("forms/employee_form", "employee", employee);
+    }
+
+    @PostMapping("/delete")
+    public String delete(@RequestParam(value="emp_id") int emp_id) {
+        Employee employee=employeeService.getById(emp_id);
+        employeeService.delete(employee);
         return "redirect:/";
     }
 

@@ -20,8 +20,15 @@
             <td th:text="${e.getEmail()}"></td>
             <td th:text="${e.getRole()}"></td>
             <td>
-                <a class="btn btn-light" th:href="@{/edit}" role="button">Edit</a>
-                <a class="btn btn-light" th:href="@{/delete}" role="button">Delete</a>
+                <form method="post" class="padding5px" action="#" th:action="@{/edit}">
+                    <input type="hidden" th:name="emp_id" th:value="${e.getId()}">
+                    <input type="submit" class="btn btn-warning" value="Edit">
+                </form>
+
+                <form method="post" class="padding5px" action="#" th:action="@{/delete}">
+                    <input type="hidden" th:name="emp_id" th:value="${e.getId()}">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
             </td>
         </tr>
         </tbody>
