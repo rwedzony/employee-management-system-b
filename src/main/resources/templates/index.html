@@ -19,6 +19,10 @@
 </div>
 
 <!--footer-->
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
 <div th:replace="bar_footer/footer.html :: div.footer"></div>
 
 </body>
