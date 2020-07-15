@@ -2,6 +2,7 @@ package com.rafwedz.employee.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -26,26 +27,47 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         users.add(
                 User.withDefaultPasswordEncoder()
                         .username("admin")
-                        .password("1234")
+                        .password("admin")
+                        .roles("ADMIN")
+                        .build()
+        );
+        users.add(
+                User.withDefaultPasswordEncoder()
+                        .username("user")
+                        .password("user")
                         .roles("USER")
                         .build()
         );
+        users.add(
+                User.withDefaultPasswordEncoder()
+                        .username("moderator")
+                        .password("moderator")
+                        .roles("MODERATOR")
+                        .build()
+        );
+
+
+
         return new InMemoryUserDetailsManager(users);
 
     }
-//
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//
-//                .inMemoryAuthentication()
-//                .withUser("admin")
-//                .password("admin")
-//                .roles("USER");
-//
-//
-//
-//    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.httpBasic()
+                .and()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET,"/**").hasAnyRole("USER","MODERATOR","ADMIN")
+                .antMatchers(HttpMethod.POST,"/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE,"/**").hasRole("ADMIN")
+                .and()
+                .formLogin().permitAll()
+                .and()
+                .logout().permitAll()
+                .and()
+                .csrf().disable();
+
+    }
 }
 
 

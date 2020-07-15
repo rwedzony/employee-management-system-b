@@ -3,6 +3,8 @@ package com.rafwedz.employee.controllers;
 import com.rafwedz.employee.models.Employee;
 import com.rafwedz.employee.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,7 +23,9 @@ public class EmployeeController {
 
     @GetMapping("/")
     public String welcomePage(Model model) {
+        SecurityContext context= SecurityContextHolder.getContext();
         model.addAttribute("employees", employeeService.getAllEmployees());
+        model.addAttribute("message",context.getAuthentication().getName());
         return "index";
     }
 
@@ -46,7 +50,7 @@ public class EmployeeController {
         return new ModelAndView("forms/employee_form", "employee", employee);
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public String delete(@RequestParam(value="emp_id") int emp_id) {
         Employee employee=employeeService.getById(emp_id);
         employeeService.delete(employee);
