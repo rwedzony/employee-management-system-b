@@ -1,6 +1,32 @@
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <div class="top-bar">
+
     <h1>Employee Management system-top bar</h1>
-<p>You are logged as: <span id="user" th:text="${message}"></span></p>
+
+    <p>You are logged as: <span id="user" th:text="${message}"></span></p>
+
+    <!--sign out button-->
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+
+
+    <!--calendar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/employees}">Employee List <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/workschedule}">Work Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/daysoff}">Daysoff plan</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
 </div>
 
