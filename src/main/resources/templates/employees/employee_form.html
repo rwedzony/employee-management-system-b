@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
-<head th:replace="header :: head"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{main/layout}">
+<head>
+</head>
 <body>
 
-<!--top bar-->
-<div th:replace="bar_footer/top_bar.html :: div.top-bar"></div>
 
 
 <!--Employe form-->
-
+<div layout:fragment="content">
 <div class="container">
-<form action="#" th:action="@{employees/save}" th:object="${employee}" method="post">
+<form action="#" th:action="@{/employees/save}" th:object="${employee}" method="post">
 
     <input type="text" th:field="*{id}">
 
@@ -25,10 +26,9 @@
     <input type="submit" th:value="Save" class="btn btn-light">
 </form>
 </div>
+</div>
 
 
-<!--footer-->
-<div th:replace="bar_footer/footer.html :: div.footer"></div>
 
 </body>
 </html>
