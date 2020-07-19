@@ -1,5 +1,6 @@
 package com.rafwedz.employee.controllers;
 
+import com.rafwedz.employee.Utils.LoggedUserDetails;
 import com.rafwedz.employee.annotations.Logging;
 import com.rafwedz.employee.models.Employee;
 import com.rafwedz.employee.services.EmployeeService;
@@ -28,15 +29,17 @@ public class EmployeeController {
     public String employeeList(Model model) {
         SecurityContext context= SecurityContextHolder.getContext();
         model.addAttribute("employees", employeeService.getAllEmployees());
-        model.addAttribute("message",context.getAuthentication().getName());
+        model.addAttribute("message",LoggedUserDetails.getLoggedUserName());
         return "employees/employees";
     }
 
     @RolesAllowed("ADMIN")
     @GetMapping("/add")
+    @Logging
     public String showEmployeeForm(Model model) {
         Employee employee=new Employee();
         model.addAttribute("employee",employee);
+        model.addAttribute("message",LoggedUserDetails.getLoggedUserName());
         return "employees/employee_form";
 
     }
@@ -49,9 +52,12 @@ public class EmployeeController {
     }
 
     @PostMapping(value = "/edit")
-    public ModelAndView edit(@RequestParam(value = "emp_id") int emp_id) {
+    @Logging
+    public String edit(@RequestParam(value = "emp_id") int emp_id,Model model) {
         Employee employee = employeeService.getById(emp_id);
-        return new ModelAndView("employees/employee_form", "employee", employee);
+        model.addAttribute("employee",employee);
+        model.addAttribute("message",LoggedUserDetails.getLoggedUserName());
+        return "employees/employee_form";
     }
 
 
