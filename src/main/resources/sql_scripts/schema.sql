@@ -21,7 +21,8 @@ CREATE TABLE employee
     first_name varchar(255)    NOT NULL,
     last_name  varchar(255)    NOT NULL,
     email      varchar(255)    NOT NULL,
-    role       varchar(255)    NOT NULL
+    role       varchar(255)    NOT NULL,
+    current_month_working_hours       integer   NOT NULL DEFAULT 168
 );
 
 -- fill employee table with sample data

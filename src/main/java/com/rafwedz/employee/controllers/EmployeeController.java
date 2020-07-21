@@ -35,7 +35,6 @@ public class EmployeeController {
 
     @RolesAllowed("ADMIN")
     @GetMapping("/add")
-    @Logging
     public String showEmployeeForm(Model model) {
         Employee employee=new Employee();
         model.addAttribute("employee",employee);
@@ -52,7 +51,6 @@ public class EmployeeController {
     }
 
     @PostMapping(value = "/edit")
-    @Logging
     public String edit(@RequestParam(value = "emp_id") int emp_id,Model model) {
         Employee employee = employeeService.getById(emp_id);
         model.addAttribute("employee",employee);

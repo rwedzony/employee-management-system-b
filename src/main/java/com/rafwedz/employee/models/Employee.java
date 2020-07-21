@@ -22,4 +22,11 @@ public class Employee {
     private String email;
     @Column
     private String role;
+    @Column
+    private int currentMonthWorkingHours;
+
+    public char getLastNameFirstChar(){
+        return lastName.charAt(0);
+    }
+
 }
