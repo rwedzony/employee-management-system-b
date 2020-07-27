@@ -15,5 +15,8 @@ public class LoggedUserDetails {
     public static void setLoggedUserName() {
         SecurityContext context=SecurityContextHolder.getContext();
         LoggedUserName=context.getAuthentication().getName();
+
+
     }
+
 }
