@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // if so, remove the element from the "Draggable Events" list
                 arg.draggedEl.parentNode.removeChild(arg.draggedEl);
             }
-            alert(arg.draggedEl.innerText)
-            window.location='../workschedule/data?'+arg.draggedEl.innerText
+            //alert(arg.draggedEl.innerText)
+            //window.location='../workschedule/data?'+arg.draggedEl.innerText
         }
     });
     calendar.render();
