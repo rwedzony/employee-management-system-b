@@ -1,4 +1,4 @@
-package com.rafwedz.employee.temp;
+package com.rafwedz.employee.utils;
 
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
