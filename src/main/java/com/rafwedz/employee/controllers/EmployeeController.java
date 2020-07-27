@@ -1,17 +1,15 @@
 package com.rafwedz.employee.controllers;
 
-import com.rafwedz.employee.Utils.LoggedUserDetails;
+import com.rafwedz.employee.utils.LoggedUserDetails;
 import com.rafwedz.employee.annotations.Logging;
 import com.rafwedz.employee.models.Employee;
 import com.rafwedz.employee.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.security.RolesAllowed;
 
