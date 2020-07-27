@@ -1,6 +1,6 @@
 package com.rafwedz.employee.controllers;
 
-import com.rafwedz.employee.utils.LoggedUserDetails;
+import com.rafwedz.employee.temp.LoggedUserDetails;
 import com.rafwedz.employee.annotations.Logging;
 import com.rafwedz.employee.models.Employee;
 import com.rafwedz.employee.services.EmployeeService;
