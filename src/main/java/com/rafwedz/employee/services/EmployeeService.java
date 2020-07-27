@@ -3,6 +3,7 @@ package com.rafwedz.employee.services;
 
 import com.rafwedz.employee.models.Employee;
 import com.rafwedz.employee.repositories.EmployeeRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class EmployeeService {
     }
 
     public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        return employeeRepository.findAll(Sort.by(Sort.Direction.ASC,"id"));
     }
 
     public void save(final Employee employee){ employeeRepository.save(employee); }

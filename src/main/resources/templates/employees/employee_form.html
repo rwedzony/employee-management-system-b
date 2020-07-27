@@ -13,7 +13,7 @@
 <div class="container">
 <form action="#" th:action="@{/employees/save}" th:object="${employee}" method="post">
 
-<!--    <input type="text" th:field="*{id}">-->
+    <input type="hidden" th:field="*{id}">
 
     <input type="text" class="form-control" th:field="*{firstName}" placeholder="First Name"><br>
 
@@ -23,6 +23,7 @@
 
     <input type="text" class="form-control" th:field="*{role}" placeholder="role"><br>
 
+    <input type="hidden" th:field="*{currentMonthWorkingHours}">
     <input type="submit" th:value="Save" class="btn btn-light">
 </form>
 </div>

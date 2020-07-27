@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.security.RolesAllowed;
 
@@ -42,18 +43,30 @@ public class EmployeeController {
     }
     @PostMapping("/save")
     public String save(@ModelAttribute Employee employee) {
-
-        employeeService.save(employee);
+        if (employee.getId() == 0) {
+            employeeService.save(employee);
+        } else {
+            Employee empTemp = employeeService.getById(employee.getId());
+            empTemp.setFirstName(employee.getFirstName());
+            empTemp.setLastName(employee.getLastName());
+            empTemp.setEmail(employee.getEmail());
+            empTemp.setRole(employee.getRole());
+            empTemp.setCurrentMonthWorkingHours(employee.getCurrentMonthWorkingHours());
+            employeeService.save(empTemp);
+        }
 
         return "redirect:/employees";
     }
 
     @PostMapping(value = "/edit")
-    public String edit(@RequestParam(value = "emp_id") int emp_id,Model model) {
+    public String edit(@RequestParam(value = "emp_id") int emp_id, Model model) {
+
         Employee employee = employeeService.getById(emp_id);
+
         model.addAttribute("employee",employee);
         model.addAttribute("message",LoggedUserDetails.getLoggedUserName());
         return "employees/employee_form";
+        //return new ModelAndView("employees/employee_form","employee",employee);
     }
 
 
