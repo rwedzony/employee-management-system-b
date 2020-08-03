@@ -23,8 +23,8 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
 
-    @GetMapping("")
-    @Logging
+    //@GetMapping("")
+    //@Logging
     public String employeeList(Model model) {
         SecurityContext context= SecurityContextHolder.getContext();
         model.addAttribute("employees", employeeService.getAllEmployees());
@@ -32,8 +32,8 @@ public class EmployeeController {
         return "employees/employees";
     }
 
-    @RolesAllowed("ADMIN")
-    @GetMapping("/add")
+    //@RolesAllowed("ADMIN")
+    //@GetMapping("/add")
     public String showEmployeeForm(Model model) {
         Employee employee=new Employee();
         model.addAttribute("employee",employee);
@@ -41,7 +41,7 @@ public class EmployeeController {
         return "employees/employee_form";
 
     }
-    @PostMapping("/save")
+    //@PostMapping("/save")
     public String save(@ModelAttribute Employee employee) {
         if (employee.getId() == 0) {
             employeeService.save(employee);
@@ -58,7 +58,7 @@ public class EmployeeController {
         return "redirect:/employees";
     }
 
-    @PostMapping(value = "/edit")
+    //@PostMapping(value = "/edit")
     public String edit(@RequestParam(value = "emp_id") int emp_id, Model model) {
 
         Employee employee = employeeService.getById(emp_id);
@@ -70,7 +70,7 @@ public class EmployeeController {
     }
 
 
-    @PostMapping("/delete")
+    //@PostMapping("/delete")
     public String delete(@RequestParam(value="emp_id") int emp_id) {
         Employee employee=employeeService.getById(emp_id);
         employeeService.delete(employee);

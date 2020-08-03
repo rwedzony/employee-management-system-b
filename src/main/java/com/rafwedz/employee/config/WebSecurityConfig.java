@@ -62,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.DELETE,"/**").hasRole("ADMIN")
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/employees", true)
+                .defaultSuccessUrl("/", true)
                 .permitAll()
                 .and()
                 .logout().permitAll()

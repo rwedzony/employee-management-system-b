@@ -3,6 +3,7 @@ package com.rafwedz.employee.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import javax.persistence.*;
 
@@ -14,15 +15,15 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column
+    @NonNull
     private String firstName;
-    @Column
+    @NonNull
     private String lastName;
-    @Column
+    @NonNull
     private String email;
-    @Column
+    @NonNull
     private String role;
-    @Column
+    @NonNull
     private int currentMonthWorkingHours;
 
     public char getLastNameFirstChar(){
