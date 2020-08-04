@@ -13,7 +13,9 @@ public class CalendarView extends VerticalLayout {
 
     public CalendarView() {
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
-        //FullCalendar calendar = FullCalendarBuilder.create().build();
+        FullCalendar calendar = FullCalendarBuilder.create().build();
+        add(calendar);
+        //container.setFlexGrow(1, calendar);
 
         add(new Label("calendar label"));
     }
