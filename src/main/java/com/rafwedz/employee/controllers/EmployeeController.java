@@ -19,7 +19,7 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
 
-    @GetMapping("")
+    //@GetMapping("")
     //@Logging
     @CrossOrigin
     public List<Employee> employeeList(Model model) {
