@@ -1,1 +1,0 @@
-web: java -jar target/employee-1.0.jar $PORT
