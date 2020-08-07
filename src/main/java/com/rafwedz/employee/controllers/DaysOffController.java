@@ -1,7 +1,6 @@
 package com.rafwedz.employee.controllers;
 
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DaysOffController {
     @GetMapping("")
     public String workScheduleIndex(Model model){
-        SecurityContext context= SecurityContextHolder.getContext();
-        model.addAttribute("message",context.getAuthentication().getName());
+        //SecurityContext context= SecurityContextHolder.getContext();
+        //model.addAttribute("message",context.getAuthentication().getName());
         return "daysoff/daysoff";
     }
 }

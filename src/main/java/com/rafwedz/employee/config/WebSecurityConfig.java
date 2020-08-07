@@ -16,8 +16,8 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import java.util.ArrayList;
 import java.util.List;
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean

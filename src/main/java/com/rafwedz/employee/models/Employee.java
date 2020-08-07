@@ -26,8 +26,8 @@ public class Employee {
     @NonNull
     private int currentMonthWorkingHours;
 
-    public char getLastNameFirstChar(){
-        return lastName.charAt(0);
-    }
+//    public char getLastNameFirstChar(){
+//        return lastName.charAt(0);
+//    }
 
 }
