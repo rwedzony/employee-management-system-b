@@ -25,9 +25,7 @@ public class EmployeeController {
     //@Logging
     @CrossOrigin
     public List<Employee> employeeList(Model model) {
-        //SecurityContext context= SecurityContextHolder.getContext();
         model.addAttribute("employees", employeeService.getAllEmployees());
-       // model.addAttribute("message",LoggedUserDetails.getLoggedUserName());
         return employeeService.getAllEmployees();
     }
 
@@ -37,32 +35,22 @@ public class EmployeeController {
     }
 
 
-    @PostMapping("/create")
+    @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public void createEmployee(@RequestBody Employee employee) {
-        if (employee.getId() == 0) {
             employeeService.save(employee);
-        } else {
-            Employee empTemp = employeeService.getEmployeeById(employee.getId()).get();
-            empTemp.setFirstName(employee.getFirstName());
-            empTemp.setLastName(employee.getLastName());
-            empTemp.setEmail(employee.getEmail());
-            empTemp.setRole(employee.getRole());
-            empTemp.setCurrentMonthWorkingHours(employee.getCurrentMonthWorkingHours());
-            employeeService.save(empTemp);
-        }
-
     }
 
-    @PostMapping(value = "/edit")
-    public String edit(@RequestParam(value = "emp_id") long emp_id, Model model) {
-
-        Employee employee = employeeService.getEmployeeById(emp_id).get();
-
-        model.addAttribute("employee",employee);
-        //model.addAttribute("message",LoggedUserDetails.getLoggedUserName());
-        return "employees/employee_form";
-        //return new ModelAndView("employees/employee_form","employee",employee);
+    @PutMapping(value = "/{emp_id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable(value = "emp_id") String emp_id, @RequestBody Employee employee) {
+        Employee empTemp = employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
+        empTemp.setFirstName(employee.getFirstName());
+        empTemp.setLastName(employee.getLastName());
+        empTemp.setEmail(employee.getEmail());
+        empTemp.setRole(employee.getRole());
+        empTemp.setCurrentMonthWorkingHours(employee.getCurrentMonthWorkingHours());
+        employeeService.save(empTemp);
     }
 
 
@@ -71,9 +59,5 @@ public class EmployeeController {
     public void delete(@PathVariable(value="emp_id") long emp_id) {
         employeeService.deleteEmployeeById(emp_id);
     }
-
-
-
-
 
 }
