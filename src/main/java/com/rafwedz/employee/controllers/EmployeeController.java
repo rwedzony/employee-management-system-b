@@ -5,6 +5,7 @@ import com.rafwedz.employee.models.Employee;
 import com.rafwedz.employee.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -74,11 +75,10 @@ public class EmployeeController {
     }
 
 
-    @PostMapping("/delete")
-    public String delete(@RequestParam(value="emp_id") long emp_id) {
-        Employee employee=employeeService.getEmployeeById(emp_id).get();
-        employeeService.delete(employee);
-        return "redirect:/employees";
+    @DeleteMapping("/{emp_id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable(value="emp_id") long emp_id) {
+        employeeService.deleteEmployeeById(emp_id);
     }
 
 
