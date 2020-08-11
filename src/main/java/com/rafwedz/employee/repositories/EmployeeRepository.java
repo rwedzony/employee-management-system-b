@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
+public interface EmployeeRepository extends JpaRepository<Employee,Long> {
     @Query("select e from Employee e " +
             "where lower(e.firstName) like lower(concat('%', :searchTerm, '%')) " +
             "or lower(e.lastName) like lower(concat('%', :searchTerm, '%'))") //

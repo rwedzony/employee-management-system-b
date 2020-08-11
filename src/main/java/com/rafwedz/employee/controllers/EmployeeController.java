@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityExistsException;
 import java.util.List;
 
 
@@ -28,6 +29,12 @@ public class EmployeeController {
        // model.addAttribute("message",LoggedUserDetails.getLoggedUserName());
         return employeeService.getAllEmployees();
     }
+    @GetMapping("/{emp_id}")
+    public Employee getEmployeeById(@PathVariable(value="emp_id") String emp_id){
+        return employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
+    }
+
+
 
     //@RolesAllowed("ADMIN")
     //@GetMapping("/add")
@@ -43,7 +50,7 @@ public class EmployeeController {
         if (employee.getId() == 0) {
             employeeService.save(employee);
         } else {
-            Employee empTemp = employeeService.getById(employee.getId());
+            Employee empTemp = employeeService.getEmployeeById(employee.getId()).get();
             empTemp.setFirstName(employee.getFirstName());
             empTemp.setLastName(employee.getLastName());
             empTemp.setEmail(employee.getEmail());
@@ -56,9 +63,9 @@ public class EmployeeController {
     }
 
     @PostMapping(value = "/edit")
-    public String edit(@RequestParam(value = "emp_id") int emp_id, Model model) {
+    public String edit(@RequestParam(value = "emp_id") long emp_id, Model model) {
 
-        Employee employee = employeeService.getById(emp_id);
+        Employee employee = employeeService.getEmployeeById(emp_id).get();
 
         model.addAttribute("employee",employee);
         //model.addAttribute("message",LoggedUserDetails.getLoggedUserName());
@@ -68,8 +75,8 @@ public class EmployeeController {
 
 
     @PostMapping("/delete")
-    public String delete(@RequestParam(value="emp_id") int emp_id) {
-        Employee employee=employeeService.getById(emp_id);
+    public String delete(@RequestParam(value="emp_id") long emp_id) {
+        Employee employee=employeeService.getEmployeeById(emp_id).get();
         employeeService.delete(employee);
         return "redirect:/employees";
     }

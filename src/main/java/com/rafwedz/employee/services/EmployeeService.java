@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -34,9 +35,10 @@ public class EmployeeService {
 
     public void save(final Employee employee){ employeeRepository.save(employee); }
 
-    public Employee getById(int emp_id){
-       return employeeRepository.getOne(emp_id);
+    public Optional<Employee> getEmployeeById(Long emp_id){
+       return employeeRepository.findById(emp_id);
     }
+
     public void delete(Employee employee){
         employeeRepository.delete(employee);
     }
