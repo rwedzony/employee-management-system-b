@@ -30,24 +30,16 @@ public class EmployeeController {
        // model.addAttribute("message",LoggedUserDetails.getLoggedUserName());
         return employeeService.getAllEmployees();
     }
+
     @GetMapping("/{emp_id}")
     public Employee getEmployeeById(@PathVariable(value="emp_id") String emp_id){
         return employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
     }
 
 
-
-    //@RolesAllowed("ADMIN")
-    //@GetMapping("/add")
-    public String showEmployeeForm(Model model) {
-        Employee employee=new Employee();
-        model.addAttribute("employee",employee);
-        //model.addAttribute("message",LoggedUserDetails.getLoggedUserName());
-        return "employees/employee_form";
-
-    }
-    //@PostMapping("/save")
-    public String save(@ModelAttribute Employee employee) {
+    @PostMapping("/create")
+    @ResponseStatus(HttpStatus.OK)
+    public void createEmployee(@RequestBody Employee employee) {
         if (employee.getId() == 0) {
             employeeService.save(employee);
         } else {
@@ -60,7 +52,6 @@ public class EmployeeController {
             employeeService.save(empTemp);
         }
 
-        return "redirect:/employees";
     }
 
     @PostMapping(value = "/edit")

@@ -33,7 +33,11 @@ public class EmployeeService {
     public long count(){ return employeeRepository.count();
     }
 
-    public void save(final Employee employee){ employeeRepository.save(employee); }
+    public void save(final Employee employee){
+        employeeRepository.save(employee);
+    }
+
+
 
     public Optional<Employee> getEmployeeById(Long emp_id){
        return employeeRepository.findById(emp_id);
