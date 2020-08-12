@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/employees")
+@CrossOrigin
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -23,7 +24,6 @@ public class EmployeeController {
 
     @GetMapping("")
     //@Logging
-    @CrossOrigin
     public List<Employee> employeeList(Model model) {
         model.addAttribute("employees", employeeService.getAllEmployees());
         return employeeService.getAllEmployees();
