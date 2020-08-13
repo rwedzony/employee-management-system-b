@@ -25,12 +25,14 @@ public class EmployeeController {
     @GetMapping("")
     //@Logging
     public List<Employee> employeeList(Model model) {
+        System.out.println("get ALL");
         model.addAttribute("employees", employeeService.getAllEmployees());
         return employeeService.getAllEmployees();
     }
 
     @GetMapping("/{emp_id}")
     public Employee getEmployeeById(@PathVariable(value="emp_id") String emp_id){
+        System.out.println("GET by ID fuction");
         return employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
     }
 
@@ -38,12 +40,14 @@ public class EmployeeController {
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public void createEmployee(@RequestBody Employee employee) {
-            employeeService.save(employee);
+        System.out.println("create function");
+        employeeService.save(employee);
     }
 
     @PutMapping(value = "/{emp_id}")
     @ResponseStatus(HttpStatus.OK)
     public void update(@PathVariable(value = "emp_id") String emp_id, @RequestBody Employee employee) {
+        System.out.println("update function");
         Employee empTemp = employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
         empTemp.setFirstName(employee.getFirstName());
         empTemp.setLastName(employee.getLastName());
@@ -54,10 +58,11 @@ public class EmployeeController {
     }
 
 
-    @DeleteMapping("/{emp_id}")
+    @DeleteMapping(value="/{emp_id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable(value="emp_id") long emp_id) {
-        employeeService.deleteEmployeeById(emp_id);
+    public void delete(@PathVariable(value="emp_id") String emp_id) {
+        System.out.println("delete function");
+        employeeService.deleteEmployeeById(Long.parseLong(emp_id));
     }
 
 }
