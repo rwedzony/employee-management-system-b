@@ -18,7 +18,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping(value = "/employees")
 @CrossOrigin
-@PreAuthorize("hasRole('USER')")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -26,6 +25,7 @@ public class EmployeeController {
 
     @GetMapping("")
     //@Logging
+    @PreAuthorize("hasRole('USER')")
     public List<Employee> employeeList(Model model) {
         System.out.println("get ALL");
         model.addAttribute("employees", employeeService.getAllEmployees());
@@ -34,6 +34,7 @@ public class EmployeeController {
 
 
     @GetMapping("/{emp_id}")
+    @PreAuthorize("hasRole('USER')")
     public Employee getEmployeeById(@PathVariable(value="emp_id") String emp_id){
         System.out.println("GET by ID fuction");
         return employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
@@ -42,6 +43,7 @@ public class EmployeeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasRole('ADMIN')")
     public void createEmployee(@RequestBody Employee employee) {
         System.out.println("create function");
         employeeService.save(employee);
@@ -49,6 +51,7 @@ public class EmployeeController {
 
     @PutMapping(value = "/{emp_id}")
     @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasRole('ADMIN')")
     public void update(@PathVariable(value = "emp_id") String emp_id, @RequestBody Employee employee) {
         System.out.println("update function");
         Employee empTemp = employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
@@ -63,6 +66,7 @@ public class EmployeeController {
 
     @DeleteMapping(value="/{emp_id}")
     @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasRole('ADMIN')")
     public void delete(@PathVariable(value="emp_id") String emp_id) {
         System.out.println("delete function");
         employeeService.deleteEmployeeById(Long.parseLong(emp_id));
