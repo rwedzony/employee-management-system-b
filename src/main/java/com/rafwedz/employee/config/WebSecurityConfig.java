@@ -2,6 +2,7 @@ package com.rafwedz.employee.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -11,13 +12,21 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.authentication.logout.HeaderWriterLogoutHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.header.writers.ClearSiteDataHeaderWriter;
+
+import static org.springframework.security.web.header.writers.ClearSiteDataHeaderWriter.Directive.*;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
- @Bean
+
+
+
+    @Bean
     public UserDetailsService userDetailsService(){
      UserDetails user= User.withDefaultPasswordEncoder()
              .username("user")
@@ -35,13 +44,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-     http.authorizeRequests()
-                    .anyRequest().hasAnyRole("ADMIN","USER")
-                    .and()
-                    .formLogin().permitAll()
-                    .and()
-                    .logout().permitAll();
+//     http.authorizeRequests()
+//                    .anyRequest().hasAnyRole("ADMIN","USER")
+//                    .and()
+//                    .formLogin().permitAll()
+//                    .and()
+//                    .logout().permitAll();
+//.logout(logout -> logout
+//                .logoutUrl("/logout")
+//                .addLogoutHandler(new HeaderWriterLogoutHandler(new ClearSiteDataHeaderWriter(SOURCE))))
 
 
+        http
+                .csrf()
+                .disable()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS,"/**")
+                .authenticated()
+                .and()
+                .httpBasic()
+                .and()
+                .logout();
     }
 }
