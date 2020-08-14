@@ -6,6 +6,7 @@ import com.rafwedz.employee.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping(value = "/employees")
 @CrossOrigin
+@PreAuthorize("hasRole('USER')")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -29,6 +31,7 @@ public class EmployeeController {
         model.addAttribute("employees", employeeService.getAllEmployees());
         return employeeService.getAllEmployees();
     }
+
 
     @GetMapping("/{emp_id}")
     public Employee getEmployeeById(@PathVariable(value="emp_id") String emp_id){
