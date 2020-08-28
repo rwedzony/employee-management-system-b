@@ -10,7 +10,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityExistsException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,16 +27,15 @@ public class EmployeeController {
 
     @GetMapping("")
     //@Logging
-    @PreAuthorize("hasRole('USER')")
-    public List<Employee> employeeList(Model model) {
-        System.out.println("get ALL");
-        model.addAttribute("employees", employeeService.getAllEmployees());
-        return employeeService.getAllEmployees();
+    public List<Employee> employeeList() {
+        System.out.println("get ALL in GET MAPPING");
+        List<Employee> employees =new ArrayList<>();
+        employees=employeeService.getAllEmployees();
+        return employees;
     }
 
 
     @GetMapping("/{emp_id}")
-    @PreAuthorize("hasRole('USER')")
     public Employee getEmployeeById(@PathVariable(value="emp_id") String emp_id){
         System.out.println("GET by ID fuction");
         return employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
@@ -43,7 +44,6 @@ public class EmployeeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasRole('ADMIN')")
     public void createEmployee(@RequestBody Employee employee) {
         System.out.println("create function");
         employeeService.save(employee);
@@ -51,7 +51,6 @@ public class EmployeeController {
 
     @PutMapping(value = "/{emp_id}")
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasRole('ADMIN')")
     public void update(@PathVariable(value = "emp_id") String emp_id, @RequestBody Employee employee) {
         System.out.println("update function");
         Employee empTemp = employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
@@ -61,12 +60,12 @@ public class EmployeeController {
         empTemp.setRole(employee.getRole());
         empTemp.setCurrentMonthWorkingHours(employee.getCurrentMonthWorkingHours());
         employeeService.save(empTemp);
+
     }
 
 
     @DeleteMapping(value="/{emp_id}")
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasRole('ADMIN')")
     public void delete(@PathVariable(value="emp_id") String emp_id) {
         System.out.println("delete function");
         employeeService.deleteEmployeeById(Long.parseLong(emp_id));

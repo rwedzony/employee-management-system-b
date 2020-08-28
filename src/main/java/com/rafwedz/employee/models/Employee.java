@@ -22,9 +22,25 @@ public class Employee {
     @NonNull
     private String email;
     @NonNull
+    private String password;
+    @NonNull
+    private String empAuthLevel;
+    @NonNull
     private String role;
     @NonNull
     private int currentMonthWorkingHours;
+
+    public Employee(Employee employee){
+        this.id=employee.getId();
+        this.firstName=employee.getFirstName();
+        this.lastName=employee.getLastName();
+        this.email=employee.getEmail();
+        this.password=employee.getPassword();
+        this.role=employee.getRole();
+        this.currentMonthWorkingHours=employee.getCurrentMonthWorkingHours();
+        this.empAuthLevel=employee.empAuthLevel;
+    }
+
 
 //    public char getLastNameFirstChar(){
 //        return lastName.charAt(0);

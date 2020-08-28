@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee,Long> {
@@ -14,4 +15,7 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
             "where lower(e.firstName) like lower(concat('%', :searchTerm, '%')) " +
             "or lower(e.lastName) like lower(concat('%', :searchTerm, '%'))") //
     List<Employee> search(@Param("searchTerm") String searchTerm); //
+
+    @Query(value = "select e from Employee e where e.email = ?1")
+    Optional<Employee> findUserByUsername(String s);
 }
