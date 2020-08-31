@@ -39,6 +39,9 @@ public class AuthService {
 
         final String jwt = jwtutil.generateToken(userDetails);
 
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        return ResponseEntity.ok(new AuthenticationResponse(jwt,
+                employeeRepository.findFirstNameByUsername(loginRequest.getUsername()),
+                        employeeRepository.findLastNameByUsername(loginRequest.getUsername()),
+                                employeeRepository.findRoleByUsername(loginRequest.getUsername())));
     }
 }

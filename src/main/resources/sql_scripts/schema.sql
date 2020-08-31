@@ -38,11 +38,11 @@ CREATE TABLE employee
 Insert into employee (first_name, last_name, email,password,role,emp_auth_level)
 values ('Janina', 'Nowak', 'janinanowak@wp.pl',
         '$2y$12$TYzxgKmV6zVzyJo.Gu7GyurGDtsFdqet54EFx.EJaCcqA8wiE3oya',
-        'barista','ADMIN');
+        'barista','ROLE_ADMIN');
 Insert into employee (first_name, last_name, email, password,role,emp_auth_level)
 values ('Marek', 'Gladysz', 'marekgladysz@onet.pl',
         '$2y$12$alREWZMc23cs8vVHr/N5OOcBcJhRr8XsuzGqT5Fq1U0EQNmE1wrgK',
-        'kitchen chef','USER');
+        'kitchen chef','ROLE_USER');
 --
 -- Insert into employee (first_name, last_name, email, password,role,emp_auth_level)
 -- values ('Dominika', 'Paradowska', 'dominikaparadowska@interia.pl',
