@@ -6,11 +6,10 @@ import com.rafwedz.employee.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.security.RolesAllowed;
+
 import javax.persistence.EntityExistsException;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +56,7 @@ public class EmployeeController {
         empTemp.setFirstName(employee.getFirstName());
         empTemp.setLastName(employee.getLastName());
         empTemp.setEmail(employee.getEmail());
-        empTemp.setRole(employee.getRole());
+        empTemp.setOccupation(employee.getOccupation());
         empTemp.setCurrentMonthWorkingHours(employee.getCurrentMonthWorkingHours());
         employeeService.save(empTemp);
 

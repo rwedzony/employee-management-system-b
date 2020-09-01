@@ -26,23 +26,54 @@ CREATE TABLE employee
     last_name  varchar(255)    NOT NULL,
     email      varchar(255)    NOT NULL,
     password   varchar(255)    NOT NULL,
-    role       varchar(255)    NOT NULL,
+    salary      integer        NOT NULL,
+    occupation       varchar(255)    NOT NULL,
     emp_auth_level  varchar(255)    NOT NULL,
-    current_month_working_hours       integer   NOT NULL DEFAULT 168
+    current_month_working_hours       integer   NOT NULL DEFAULT 168,
+    remaining_day_offs              integer NOT NULL DEFAULT 26
 );
 
 
 
 -- fill employee table with sample data
 
-Insert into employee (first_name, last_name, email,password,role,emp_auth_level)
-values ('Janina', 'Nowak', 'janinanowak@wp.pl',
+Insert into employee (first_name,
+                      last_name,
+                      email,
+                      password,
+                      salary,
+                      occupation,
+                      emp_auth_level,
+                      current_month_working_hours,
+                      remaining_day_offs)
+values ('Janina',
+        'Nowak',
+        'janinanowak@wp.pl',
         '$2y$12$TYzxgKmV6zVzyJo.Gu7GyurGDtsFdqet54EFx.EJaCcqA8wiE3oya',
-        'barista','ROLE_ADMIN');
-Insert into employee (first_name, last_name, email, password,role,emp_auth_level)
-values ('Marek', 'Gladysz', 'marekgladysz@onet.pl',
+        7500,
+        'managing board',
+        'ROLE_ADMIN',
+        168,
+        22
+        );
+Insert into employee (first_name,
+                      last_name,
+                      email,
+                      password,
+                      salary,
+                      occupation,
+                      emp_auth_level,
+                      current_month_working_hours,
+                      remaining_day_offs)
+values ('Marek',
+        'Gladysz',
+        'marekgladysz@onet.pl',
         '$2y$12$alREWZMc23cs8vVHr/N5OOcBcJhRr8XsuzGqT5Fq1U0EQNmE1wrgK',
-        'kitchen chef','ROLE_USER');
+        2000,
+        'cleaner',
+        'ROLE_USER',
+        155,
+        10);
 --
 -- Insert into employee (first_name, last_name, email, password,role,emp_auth_level)
 -- values ('Dominika', 'Paradowska', 'dominikaparadowska@interia.pl',

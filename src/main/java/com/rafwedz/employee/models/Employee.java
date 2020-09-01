@@ -23,12 +23,14 @@ public class Employee {
     private String email;
     @NonNull
     private String password;
+    private int salary;
     @NonNull
     private String empAuthLevel;
     @NonNull
-    private String role;
+    private String occupation;
     @NonNull
     private int currentMonthWorkingHours;
+    private int remainingDayOffs;
 
     public Employee(Employee employee){
         this.id=employee.getId();
@@ -36,9 +38,11 @@ public class Employee {
         this.lastName=employee.getLastName();
         this.email=employee.getEmail();
         this.password=employee.getPassword();
-        this.role=employee.getRole();
+        this.salary=employee.getSalary();
+        this.occupation =employee.getOccupation();
         this.currentMonthWorkingHours=employee.getCurrentMonthWorkingHours();
-        this.empAuthLevel=employee.empAuthLevel;
+        this.empAuthLevel=employee.getEmpAuthLevel();
+        this.remainingDayOffs=employee.getRemainingDayOffs();
     }
 
 
