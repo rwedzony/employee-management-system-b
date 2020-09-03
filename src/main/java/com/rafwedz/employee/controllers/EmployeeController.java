@@ -2,7 +2,9 @@ package com.rafwedz.employee.controllers;
 
 
 import com.rafwedz.employee.models.Employee;
+import com.rafwedz.employee.models.Task;
 import com.rafwedz.employee.services.EmployeeService;
+import com.rafwedz.employee.services.TaskService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.HttpStatus;
@@ -22,7 +24,7 @@ import java.util.List;
 public class EmployeeController {
 
     private final EmployeeService employeeService;
-
+    private final TaskService taskService;
 
     @GetMapping("")
     //@Logging
@@ -36,20 +38,18 @@ public class EmployeeController {
 
     @GetMapping("/{emp_id}")
     public Employee getEmployeeById(@PathVariable(value="emp_id") String emp_id){
-        System.out.println("GET by ID fuction");
+        System.out.println("GET Emplyee by ID function");
         return employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
     }
 
 
     @PostMapping
-    @ResponseStatus(HttpStatus.OK)
     public void createEmployee(@RequestBody Employee employee) {
         System.out.println("create function");
         employeeService.save(employee);
     }
 
     @PutMapping(value = "/{emp_id}")
-    @ResponseStatus(HttpStatus.OK)
     public void update(@PathVariable(value = "emp_id") String emp_id, @RequestBody Employee employee) {
         System.out.println("update function");
         Employee empTemp = employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
@@ -64,10 +64,18 @@ public class EmployeeController {
 
 
     @DeleteMapping(value="/{emp_id}")
-    @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable(value="emp_id") String emp_id) {
         System.out.println("delete function");
         employeeService.deleteEmployeeById(Long.parseLong(emp_id));
     }
+
+    @GetMapping("/{emp_id}/tasks")
+    public String getEmployeeTasks(@PathVariable(value="emp_id") String emp_id){
+
+        return "Get All tasks";
+        // System.out.println("GET by ID fuction");
+        //return employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
+    }
+
 
 }

@@ -13,8 +13,14 @@
 
 -- create table employee for system
 
-DROP TABLE IF EXISTS employee;
+--Delete Tables to have new fresh data (It need to be done in particular ORDER!)
+
+-- first delete TASK table
 DROP TABLE IF EXISTS task;
+
+-- THAN delete employee table
+DROP TABLE IF EXISTS employee;
+
 
 
 -- CREATE TYPE auth_level AS ENUM ('ADMIN', 'USER');
@@ -39,7 +45,8 @@ CREATE TABLE task
     description varchar(255)    NOT NULL,
     status varchar(255)    NOT NULL,
     start_date date   NOT NULL,
-    end_date date  NOT NULL
+    end_date date  NOT NULL,
+    employee_id integer not null references employee(id)
 );
 
 
@@ -87,18 +94,34 @@ values ('Marek',
 INSERT INTO task(description,
                  status,
                  start_date,
-                 end_date)
+                 end_date,
+                 employee_id)
+values('Meeting with Important person',
+       'NEW',
+       '2020-08-28',
+       '2020-08-29',
+       1
+      );
+
+INSERT INTO task(description,
+                 status,
+                 start_date,
+                 end_date,
+                 employee_id)
  values('Clean the office floor',
           'NEW',
          '2020-08-28',
-         '2020-08-29'
+         '2020-08-29',
+        2
          );
 INSERT INTO task(description,
                  status,
                  start_date,
-                 end_date)
+                 end_date,
+                 employee_id)
 values('Take out the rubbish',
        'NEW',
        '2020-09-01',
-       '2020-09-02'
+       '2020-09-02',
+       2
       );

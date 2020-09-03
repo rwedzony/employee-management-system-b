@@ -41,10 +41,14 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/tasks/**")
-                .permitAll()
                 .antMatchers("/auth/**")
                 .permitAll()
+                .antMatchers("/tasks/**")
+                .permitAll()
+                //to remove after development
+                .antMatchers("/employees/**")
+                .permitAll()
+
                 .antMatchers("/v2/api-docs",
                         "/configuration/ui",
                         "/swagger-resources/**",

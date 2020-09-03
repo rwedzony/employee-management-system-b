@@ -1,11 +1,13 @@
 package com.rafwedz.employee.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -28,9 +30,14 @@ public class Employee {
     private String empAuthLevel;
     @NonNull
     private String occupation;
-    @NonNull
+
     private int currentMonthWorkingHours;
+
     private int remainingDayOffs;
+
+    @JsonIgnore
+    @OneToMany(mappedBy="employee")
+    private Set<Task> tasks;
 
     public Employee(Employee employee){
         this.id=employee.getId();
@@ -43,11 +50,7 @@ public class Employee {
         this.currentMonthWorkingHours=employee.getCurrentMonthWorkingHours();
         this.empAuthLevel=employee.getEmpAuthLevel();
         this.remainingDayOffs=employee.getRemainingDayOffs();
+        this.tasks=employee.getTasks();
     }
-
-
-//    public char getLastNameFirstChar(){
-//        return lastName.charAt(0);
-//    }
 
 }

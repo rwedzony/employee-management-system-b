@@ -2,14 +2,11 @@ package com.rafwedz.employee.controllers;
 
 import com.rafwedz.employee.models.Employee;
 import com.rafwedz.employee.models.Task;
-import com.rafwedz.employee.services.EmployeeService;
 import com.rafwedz.employee.services.TaskService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityExistsException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,4 +26,12 @@ public class TaskController {
         return tasks;
 
     }
+
+    @GetMapping("/{task_id}")
+    public Task getTaskById(@PathVariable(value= "task_id") String task_id){
+        System.out.println("GET Task by ID function");
+        return taskService.getTaskById(Long.parseLong(task_id)).orElseThrow(EntityExistsException::new);
+    }
+
+
 }

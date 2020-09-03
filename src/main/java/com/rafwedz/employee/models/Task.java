@@ -1,5 +1,7 @@
 package com.rafwedz.employee.models;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +9,8 @@ import lombok.NonNull;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.Set;
+
 
 @Entity
 @Data
@@ -31,5 +34,10 @@ public class Task {
     @NonNull
     @Basic
     private LocalDate endDate;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="employee_id", nullable=false)
+    private Employee employee;
 
 }
