@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface TaskRepository extends JpaRepository<Task,Long> {
 
-    @Query(value = "select t from Task t where t.employee.id = ?1")
+    @Query(value = "select t from Task t where t.employee.id = ?1 order by t.id")
     Optional<List<Task>> findEmployeeTask(Long id);
 
 }

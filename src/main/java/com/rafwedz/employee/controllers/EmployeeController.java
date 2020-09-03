@@ -8,12 +8,16 @@ import com.rafwedz.employee.services.TaskService;
 import lombok.RequiredArgsConstructor;
 
 
+import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
 import javax.persistence.EntityExistsException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -24,6 +28,7 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
     private final TaskService taskService;
+    private final PasswordEncoder passwordEncoder;
 
     @GetMapping("")
     //@Logging
@@ -74,8 +79,18 @@ public class EmployeeController {
         List<Task> tasks = taskService.getEmployeeTask(Long.parseLong(emp_id)).orElse(new ArrayList<>());
 
         return tasks;
-
     }
 
-
+    @PatchMapping("/{emp_id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT, reason = "Employee partial updated!")
+    public void updatePatchEmployee(@RequestBody Map<String, String> updates, @PathVariable(value="emp_id") String emp_id) {
+        Employee empTemp = employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
+        empTemp.setFirstName(updates.get("firstName"));
+        empTemp.setLastName(updates.get("lastName"));
+        empTemp.setEmail(updates.get("email"));
+        if (!updates.get("password").isEmpty()) {
+            empTemp.setPassword(passwordEncoder.encode(updates.get("password")));
+        }
+        this.employeeService.save(empTemp);
+    }
 }
