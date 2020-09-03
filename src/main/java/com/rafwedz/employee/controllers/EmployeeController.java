@@ -70,11 +70,12 @@ public class EmployeeController {
     }
 
     @GetMapping("/{emp_id}/tasks")
-    public String getEmployeeTasks(@PathVariable(value="emp_id") String emp_id){
+    public List<Task> getEmployeeTasks(@PathVariable(value="emp_id") String emp_id){
+        Employee employee=employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
+        List<Task> tasks = taskService.getEmployeeTask(Long.parseLong(emp_id)).orElse(new ArrayList<>());
 
-        return "Get All tasks";
-        // System.out.println("GET by ID fuction");
-        //return employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
+        return tasks;
+
     }
 
 

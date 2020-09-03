@@ -91,37 +91,40 @@ values ('Marek',
         155,
         10);
 
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date,
-                 employee_id)
-values('Meeting with Important person',
-       'NEW',
-       '2020-08-28',
-       '2020-08-29',
-       1
-      );
 
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date,
-                 employee_id)
- values('Clean the office floor',
-          'NEW',
-         '2020-08-28',
-         '2020-08-29',
-        2
-         );
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date,
-                 employee_id)
-values('Take out the rubbish',
-       'NEW',
-       '2020-09-01',
-       '2020-09-02',
-       2
-      );
+
+--
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date,
+--                  employee_id)
+-- values('Meeting with Important person',
+--        'NEW',
+--        '2020-08-28',
+--        '2020-08-29',
+--        1
+--       );
+
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date,
+--                  employee_id)
+--  values('Clean the office floor',
+--           'NEW',
+--          '2020-08-28',
+--          '2020-08-29',
+--         2
+--          );
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date,
+--                  employee_id)
+-- values('Take out the rubbish',
+--        'NEW',
+--        '2020-09-01',
+--        '2020-09-02',
+--        2
+--       );
