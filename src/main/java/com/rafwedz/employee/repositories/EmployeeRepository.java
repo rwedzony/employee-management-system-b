@@ -19,6 +19,9 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
     @Query(value = "select e from Employee e where e.email = ?1")
     Optional<Employee> findUserByUsername(String s);
 
+    @Query(value = "select e.id from Employee e where e.email = ?1")
+    Long findIdByUsername(String s);
+
     @Query(value = "select e.firstName from Employee e where e.email = ?1")
     String findFirstNameByUsername(String s);
 

@@ -38,10 +38,13 @@ public class AuthService {
                 .loadUserByUsername(loginRequest.getUsername());
 
         final String jwt = jwtutil.generateToken(userDetails);
+        String loggedUserName=loginRequest.getUsername();
 
-        return ResponseEntity.ok(new AuthenticationResponse(jwt,
-                employeeRepository.findFirstNameByUsername(loginRequest.getUsername()),
-                        employeeRepository.findLastNameByUsername(loginRequest.getUsername()),
-                                employeeRepository.findRoleByUsername(loginRequest.getUsername())));
+        return ResponseEntity.ok(new AuthenticationResponse(
+                employeeRepository.findIdByUsername(loggedUserName),
+                jwt,
+                employeeRepository.findFirstNameByUsername(loggedUserName),
+                employeeRepository.findLastNameByUsername(loggedUserName),
+                employeeRepository.findRoleByUsername(loggedUserName)));
     }
 }

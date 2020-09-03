@@ -91,40 +91,57 @@ values ('Marek',
         155,
         10);
 
+Insert into employee (first_name,
+                      last_name,
+                      email,
+                      password,
+                      salary,
+                      occupation,
+                      emp_auth_level,
+                      current_month_working_hours,
+                      remaining_day_offs)
+values ('Mieczyslaw',
+        'Nowak',
+        'mnowak@wp.pl',
+        '$2y$12$369Rb.zvNNlynoJIneWCTuUwpIyYVDNC.aTupv8UmUhGKjbnlduOu',
+        2700,
+        'graphic designer',
+        'ROLE_USER',
+        160,
+        13);
 
 
---
--- INSERT INTO task(description,
---                  status,
---                  start_date,
---                  end_date,
---                  employee_id)
--- values('Meeting with Important person',
---        'NEW',
---        '2020-08-28',
---        '2020-08-29',
---        1
---       );
+INSERT INTO task(description,
+                 status,
+                 start_date,
+                 end_date,
+                 employee_id)
+values('Preapare new APP UI design',
+       'NEW',
+       '2020-09-05',
+       '2020-08-10',
+       3
+      );
 
--- INSERT INTO task(description,
---                  status,
---                  start_date,
---                  end_date,
---                  employee_id)
---  values('Clean the office floor',
---           'NEW',
---          '2020-08-28',
---          '2020-08-29',
---         2
---          );
--- INSERT INTO task(description,
---                  status,
---                  start_date,
---                  end_date,
---                  employee_id)
--- values('Take out the rubbish',
---        'NEW',
---        '2020-09-01',
---        '2020-09-02',
---        2
---       );
+INSERT INTO task(description,
+                 status,
+                 start_date,
+                 end_date,
+                 employee_id)
+ values('Clean the office floor',
+          'NEW',
+         '2020-08-28',
+         '2020-08-29',
+        2
+         );
+INSERT INTO task(description,
+                 status,
+                 start_date,
+                 end_date,
+                 employee_id)
+values('Take out the rubbish',
+       'NEW',
+       '2020-09-01',
+       '2020-09-02',
+       2
+      );

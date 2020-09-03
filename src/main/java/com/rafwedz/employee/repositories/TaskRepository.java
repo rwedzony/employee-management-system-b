@@ -14,4 +14,5 @@ public interface TaskRepository extends JpaRepository<Task,Long> {
 
     @Query(value = "select t from Task t where t.employee.id = ?1")
     Optional<List<Task>> findEmployeeTask(Long id);
+
 }

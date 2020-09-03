@@ -45,7 +45,6 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/tasks/**")
                 .permitAll()
-                //to remove after development
                 .antMatchers("/employees/**")
                 .permitAll()
 

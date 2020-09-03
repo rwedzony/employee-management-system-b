@@ -23,9 +23,12 @@ public class TaskService {
     public Optional<Task> getTaskById(Long task_id){
         return taskRepository.findById(task_id);
     }
+
     public Optional<List<Task>> getEmployeeTask(Long id){
         return taskRepository.findEmployeeTask(id);
     };
+    public void save(final Task task){taskRepository.save(task);
+    }
 
 
 }
