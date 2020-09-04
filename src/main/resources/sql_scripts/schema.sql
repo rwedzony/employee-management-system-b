@@ -46,7 +46,7 @@ CREATE TABLE task
     status varchar(255)    NOT NULL,
     start_date date   NOT NULL,
     end_date date  NOT NULL,
-    employee_id integer not null references employee(id)
+    employee_id integer references employee(id)
 );
 
 
@@ -144,4 +144,24 @@ values('Take out the rubbish',
        '2020-09-01',
        '2020-09-02',
        2
+      );
+
+INSERT INTO task(description,
+                 status,
+                 start_date,
+                 end_date)
+values('Order no 5 to be realized',
+       'NEW',
+       '2020-09-01',
+       '2020-09-02'
+      );
+
+INSERT INTO task(description,
+                 status,
+                 start_date,
+                 end_date)
+values('Order no 6 to be sent',
+       'NEW',
+       '2020-09-03',
+       '2020-09-04'
       );

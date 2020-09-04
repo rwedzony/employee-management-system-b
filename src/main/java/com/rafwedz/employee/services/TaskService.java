@@ -20,6 +20,14 @@ public class TaskService {
 
         return taskRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
+
+    public List<Task> getAllUnassignedTasks(){
+        return taskRepository.findAllUnassignedTasks();
+    }
+    public List<Task> getAllassignedTasks(){
+        return taskRepository.findAllassignedTasks();
+    }
+
     public Optional<Task> getTaskById(Long task_id){
         return taskRepository.findById(task_id);
     }

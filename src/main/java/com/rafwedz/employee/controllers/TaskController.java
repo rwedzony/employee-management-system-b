@@ -29,6 +29,24 @@ public class TaskController {
 
     }
 
+    @GetMapping("/unassigned")
+    public List<Task> notAssignedTaskList(){
+        System.out.println("get all unassigned task");
+        List<Task> unAssignedTasks =new ArrayList<>();
+        unAssignedTasks=taskService.getAllUnassignedTasks();
+        return unAssignedTasks;
+
+    }
+
+    @GetMapping("/assigned")
+    public List<Task> AssignedTaskList(){
+        System.out.println("get all assigned task");
+        List<Task> AssignedTasks =new ArrayList<>();
+        AssignedTasks=taskService.getAllassignedTasks();
+        return AssignedTasks;
+
+    }
+
     @GetMapping("/{task_id}")
     public Task getTaskById(@PathVariable(value= "task_id") String task_id){
         System.out.println("GET Task by ID function");

@@ -15,4 +15,9 @@ public interface TaskRepository extends JpaRepository<Task,Long> {
     @Query(value = "select t from Task t where t.employee.id = ?1 order by t.id")
     Optional<List<Task>> findEmployeeTask(Long id);
 
+    @Query(value = "select t from Task t where t.employee.id is null order by t.id")
+    List<Task> findAllUnassignedTasks();
+
+    @Query(value = "select t from Task t where t.employee.id is not null order by t.id")
+    List<Task> findAllassignedTasks();
 }
