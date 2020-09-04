@@ -1,5 +1,6 @@
 package com.rafwedz.employee.controllers;
 
+import com.rafwedz.employee.dto.TaskDto;
 import com.rafwedz.employee.models.Employee;
 import com.rafwedz.employee.models.Task;
 import com.rafwedz.employee.services.TaskService;
@@ -26,6 +27,14 @@ public class TaskController {
         List<Task> tasks =new ArrayList<>();
         tasks=taskService.getAllTask();
         return tasks;
+
+    }
+
+    @GetMapping("/tasksdto")
+    public List<TaskDto> getTaskDto(){
+        List<TaskDto> TasksDto =new ArrayList<>();
+        TasksDto=taskService.getTasksDtos();
+        return TasksDto;
 
     }
 

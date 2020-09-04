@@ -10,7 +10,6 @@ import java.time.Instant;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class AuthenticationResponse {
     private Long id;
     private String authToken;
