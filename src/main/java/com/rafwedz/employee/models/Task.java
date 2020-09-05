@@ -2,6 +2,9 @@ package com.rafwedz.employee.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.rafwedz.employee.utils.DateHandler;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,10 +32,12 @@ public class Task {
 
     @NonNull
     @Basic
+    @JsonDeserialize(using = DateHandler.class)
     private LocalDate startDate;
 
     @NonNull
     @Basic
+    @JsonDeserialize(using = DateHandler.class)
     private LocalDate endDate;
 
     @JsonIgnore

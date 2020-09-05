@@ -64,6 +64,13 @@ public class TaskController {
         return taskService.getTaskById(Long.parseLong(task_id)).orElseThrow(EntityExistsException::new);
     }
 
+    @PostMapping
+    public void createTask(@RequestBody Task task) {
+       // System.out.println("task desc");
+       System.out.println("create task function");
+        taskService.save(task);
+    }
+
     @PatchMapping("/{task_id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT, reason = "Task partial updated!")
     public void updateTask(@RequestBody Map<String, String> updates, @PathVariable(value="task_id") String task_id) {
