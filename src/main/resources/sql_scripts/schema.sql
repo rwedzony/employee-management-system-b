@@ -172,93 +172,93 @@ values('Clean the floor',
        '2020-08-29',
        2
       );
---Ass6
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date,
-                 employee_id)
-values('Take the rubbish',
-       'NEW',
-       '2020-09-01',
-       '2020-09-02',
-       2
-      );
-
--- Ass7
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date,
-                 employee_id)
-values('Compare new APP UI design',
-       'NEW',
-       '2020-09-05',
-       '2020-08-10',
-       3
-      );
---Ass8
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date,
-                 employee_id)
-values('Renew the office floor',
-       'NEW',
-       '2020-08-28',
-       '2020-08-29',
-       2
-      );
---Ass9
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date,
-                 employee_id)
-values('collect the rubbish',
-       'NEW',
-       '2020-09-01',
-       '2020-09-02',
-       2
-      );
-
-
--- Ass10
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date,
-                 employee_id)
-values('Test new APP UI design',
-       'NEW',
-       '2020-09-05',
-       '2020-08-10',
-       3
-      );
---Ass11
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date,
-                 employee_id)
-values('Tidy the office floor',
-       'NEW',
-       '2020-08-28',
-       '2020-08-29',
-       2
-      );
---Ass12
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date,
-                 employee_id)
-values('sort the rubbish',
-       'NEW',
-       '2020-09-01',
-       '2020-09-02',
-       2
-      );
+-- --Ass6
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date,
+--                  employee_id)
+-- values('Take the rubbish',
+--        'NEW',
+--        '2020-09-01',
+--        '2020-09-02',
+--        2
+--       );
+--
+-- -- Ass7
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date,
+--                  employee_id)
+-- values('Compare new APP UI design',
+--        'NEW',
+--        '2020-09-05',
+--        '2020-08-10',
+--        3
+--       );
+-- --Ass8
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date,
+--                  employee_id)
+-- values('Renew the office floor',
+--        'NEW',
+--        '2020-08-28',
+--        '2020-08-29',
+--        2
+--       );
+-- --Ass9
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date,
+--                  employee_id)
+-- values('collect the rubbish',
+--        'NEW',
+--        '2020-09-01',
+--        '2020-09-02',
+--        2
+--       );
+--
+--
+-- -- Ass10
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date,
+--                  employee_id)
+-- values('Test new APP UI design',
+--        'NEW',
+--        '2020-09-05',
+--        '2020-08-10',
+--        3
+--       );
+-- --Ass11
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date,
+--                  employee_id)
+-- values('Tidy the office floor',
+--        'NEW',
+--        '2020-08-28',
+--        '2020-08-29',
+--        2
+--       );
+-- --Ass12
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date,
+--                  employee_id)
+-- values('sort the rubbish',
+--        'NEW',
+--        '2020-09-01',
+--        '2020-09-02',
+--        2
+--       );
 
 
 
@@ -303,64 +303,64 @@ values('Order no 4 to be sent',
        '2020-09-03',
        '2020-09-04'
       );
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date)
-values('Order no 5 to be realized',
-       'NEW',
-       '2020-09-01',
-       '2020-09-02'
-      );
-
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date)
-values('Order no 6 to be sent',
-       'NEW',
-       '2020-09-03',
-       '2020-09-04'
-      );
-
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date)
-values('Order no 7 to be realized',
-       'NEW',
-       '2020-09-01',
-       '2020-09-02'
-      );
-
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date)
-values('Order no 8 to be sent',
-       'NEW',
-       '2020-09-03',
-       '2020-09-04'
-      );
-
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date)
-values('Order no 9 to be realized',
-       'NEW',
-       '2020-09-01',
-       '2020-09-02'
-      );
-
-INSERT INTO task(description,
-                 status,
-                 start_date,
-                 end_date)
-values('Order no 10 to be sent',
-       'NEW',
-       '2020-09-03',
-       '2020-09-04'
-      );
-
-
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date)
+-- values('Order no 5 to be realized',
+--        'NEW',
+--        '2020-09-01',
+--        '2020-09-02'
+--       );
+--
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date)
+-- values('Order no 6 to be sent',
+--        'NEW',
+--        '2020-09-03',
+--        '2020-09-04'
+--       );
+--
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date)
+-- values('Order no 7 to be realized',
+--        'NEW',
+--        '2020-09-01',
+--        '2020-09-02'
+--       );
+--
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date)
+-- values('Order no 8 to be sent',
+--        'NEW',
+--        '2020-09-03',
+--        '2020-09-04'
+--       );
+--
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date)
+-- values('Order no 9 to be realized',
+--        'NEW',
+--        '2020-09-01',
+--        '2020-09-02'
+--       );
+--
+-- INSERT INTO task(description,
+--                  status,
+--                  start_date,
+--                  end_date)
+-- values('Order no 10 to be sent',
+--        'NEW',
+--        '2020-09-03',
+--        '2020-09-04'
+--       );
+--
+--

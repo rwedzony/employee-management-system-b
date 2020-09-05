@@ -37,7 +37,7 @@ public class Task {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="employee_id", nullable=false)
+    @JoinColumn(name="employee_id")
     private Employee employee;
 
 }

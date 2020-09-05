@@ -3,6 +3,7 @@ package com.rafwedz.employee.controllers;
 import com.rafwedz.employee.dto.TaskDto;
 import com.rafwedz.employee.models.Employee;
 import com.rafwedz.employee.models.Task;
+import com.rafwedz.employee.services.EmployeeService;
 import com.rafwedz.employee.services.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ import java.util.Map;
 public class TaskController {
 
     private final TaskService taskService;
+    private final EmployeeService employeeService;
 
     @GetMapping("")
     public List<Task> taskList(){
@@ -66,7 +68,18 @@ public class TaskController {
     @ResponseStatus(value = HttpStatus.NO_CONTENT, reason = "Task partial updated!")
     public void updateTask(@RequestBody Map<String, String> updates, @PathVariable(value="task_id") String task_id) {
         Task task=taskService.getTaskById(Long.parseLong(task_id)).orElseThrow(EntityExistsException::new);
-        task.setStatus(updates.get("status"));
+
+        if(updates.containsKey("status")){
+            task.setStatus(updates.get("status"));
+        }
+        if(updates.containsKey("assigned")){
+           task.setEmployee(null);
+        }
+        if(updates.containsKey("employeeId")){
+            Employee employee = employeeService.getEmployeeById(Long.parseLong(updates.get("employeeId"))).orElseThrow(EntityExistsException::new);
+            task.setEmployee(employee);
+        }
+
         this.taskService.save(task);
     }
 
