@@ -42,7 +42,6 @@ public class TaskController {
 
     @GetMapping("/unassigned")
     public List<Task> notAssignedTaskList(){
-        System.out.println("get all unassigned task");
         List<Task> unAssignedTasks =new ArrayList<>();
         unAssignedTasks=taskService.getAllUnassignedTasks();
         return unAssignedTasks;
@@ -51,7 +50,6 @@ public class TaskController {
 
     @GetMapping("/assigned")
     public List<Task> AssignedTaskList(){
-        System.out.println("get all assigned task");
         List<Task> AssignedTasks =new ArrayList<>();
         AssignedTasks=taskService.getAllassignedTasks();
         return AssignedTasks;
@@ -60,15 +58,24 @@ public class TaskController {
 
     @GetMapping("/{task_id}")
     public Task getTaskById(@PathVariable(value= "task_id") String task_id){
-        System.out.println("GET Task by ID function");
         return taskService.getTaskById(Long.parseLong(task_id)).orElseThrow(EntityExistsException::new);
     }
 
     @PostMapping
     public void createTask(@RequestBody Task task) {
-       // System.out.println("task desc");
-       System.out.println("create task function");
         taskService.save(task);
+    }
+
+
+    @PutMapping(value = "/{task_id}")
+    public void update(@PathVariable(value = "task_id") String task_id, @RequestBody Task task) {
+        Task tempTask = taskService.getTaskById(Long.parseLong(task_id)).orElseThrow(EntityExistsException::new);
+        tempTask.setDescription(task.getDescription());
+        tempTask.setStatus(task.getStatus());
+        tempTask.setStartDate(task.getStartDate());
+        tempTask.setEndDate(task.getEndDate());
+        taskService.save(tempTask);
+
     }
 
     @PatchMapping("/{task_id}")

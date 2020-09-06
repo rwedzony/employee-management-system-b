@@ -41,7 +41,7 @@ public class Task {
     private LocalDate endDate;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name="employee_id")
     private Employee employee;
 

@@ -25,10 +25,7 @@ public class DateHandler extends StdDeserializer {
         String date = jsonParser.getText();
 
         try {
-            System.out.println("date before: " + date);
-
             SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-            System.out.println("date sdf"+sdf.toString());
             ZoneId defaultZoneId = ZoneId.systemDefault();
             return sdf.parse(date).toInstant().atZone(defaultZoneId).toLocalDate();
 

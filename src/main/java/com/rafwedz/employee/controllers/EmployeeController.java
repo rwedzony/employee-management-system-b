@@ -54,7 +54,6 @@ public class EmployeeController {
 
     @PutMapping(value = "/{emp_id}")
     public void update(@PathVariable(value = "emp_id") String emp_id, @RequestBody Employee employee) {
-        System.out.println("update function");
         Employee empTemp = employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
         empTemp.setFirstName(employee.getFirstName());
         empTemp.setLastName(employee.getLastName());
@@ -68,7 +67,9 @@ public class EmployeeController {
 
     @DeleteMapping(value="/{emp_id}")
     public void delete(@PathVariable(value="emp_id") String emp_id) {
-        System.out.println("delete function");
+        List<Task> tasks = taskService.getEmployeeTask(Long.parseLong(emp_id)).orElse(new ArrayList<>());
+        tasks.forEach(t->{t.setEmployee(null);
+        taskService.save(t);});
         employeeService.deleteEmployeeById(Long.parseLong(emp_id));
     }
 

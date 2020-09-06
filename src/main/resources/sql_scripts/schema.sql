@@ -155,7 +155,7 @@ INSERT INTO task(description,
                  end_date,
                  employee_id)
 values('Preapare new APP UI ',
-       'NEW',
+       'DONE',
        '2020-09-05',
        '2020-08-10',
        3
@@ -167,7 +167,7 @@ INSERT INTO task(description,
                  end_date,
                  employee_id)
 values('Clean the floor',
-       'NEW',
+       'DONE',
        '2020-08-28',
        '2020-08-29',
        2
