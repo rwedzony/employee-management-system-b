@@ -20,4 +20,10 @@ public interface TaskRepository extends JpaRepository<Task,Long> {
 
     @Query(value = "select t from Task t where t.employee.id is not null order by t.id")
     List<Task> findAllassignedTasks();
+
+    @Query(value = "select count(t) from Task t where t.employee.id = ?1 and t.status='DONE'")
+    int findEmployeeTaskDone(Long id);
+
+    @Query(value = "select count(t) from Task t where t.employee.id = ?1 and t.status='NEW'")
+    int findEmployeeTaskNew(Long id);
 }

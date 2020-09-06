@@ -141,7 +141,7 @@ INSERT INTO task(description,
                  end_date,
                  employee_id)
 values('Take out the rubbish',
-       'NEW',
+       'DONE',
        '2020-09-01',
        '2020-09-02',
        2

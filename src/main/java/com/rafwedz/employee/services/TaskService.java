@@ -57,4 +57,11 @@ public class TaskService {
     public void deleteTaskById(Long task_id){
         taskRepository.deleteById(task_id);
     }
+
+    public  int getEmployeeTaskDone(Long id) {
+        return taskRepository.findEmployeeTaskDone(id);
+    }
+    public  int getEmployeeTaskNew(Long id) {
+        return taskRepository.findEmployeeTaskNew(id);
+    }
 }

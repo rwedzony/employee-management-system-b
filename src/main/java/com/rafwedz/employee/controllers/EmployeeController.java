@@ -30,9 +30,7 @@ public class EmployeeController {
     private final PasswordEncoder passwordEncoder;
 
     @GetMapping("")
-    //@Logging
     public List<Employee> employeeList() {
-        System.out.println("get ALL EMPloyee");
         List<Employee> employees =new ArrayList<>();
         employees=employeeService.getAllEmployees();
         return employees;
@@ -41,7 +39,6 @@ public class EmployeeController {
 
     @GetMapping("/{emp_id}")
     public Employee getEmployeeById(@PathVariable(value="emp_id") String emp_id){
-        System.out.println("GET Emplyee by ID function");
         return employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
     }
 
@@ -81,9 +78,24 @@ public class EmployeeController {
         return tasks;
     }
 
+    @GetMapping("/{emp_id}/tasks/done")
+    public int getEmployeeTasksDone(@PathVariable(value="emp_id") String emp_id){
+        Employee employee=employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
+        int no_of_tasks = taskService.getEmployeeTaskDone(Long.parseLong(emp_id));
+        return no_of_tasks;
+    }
+
+    @GetMapping("/{emp_id}/tasks/new")
+    public int getEmployeeTasksNew(@PathVariable(value="emp_id") String emp_id){
+        Employee employee=employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
+        int no_of_tasks = taskService.getEmployeeTaskNew(Long.parseLong(emp_id));
+        return no_of_tasks;
+    }
+
     @PatchMapping("/{emp_id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT, reason = "Employee partial updated!")
     public void updatePatchEmployee(@RequestBody Map<String, String> updates, @PathVariable(value="emp_id") String emp_id) {
+        System.out.println("In the patch function");
         Employee empTemp = employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
         empTemp.setFirstName(updates.get("firstName"));
         empTemp.setLastName(updates.get("lastName"));
