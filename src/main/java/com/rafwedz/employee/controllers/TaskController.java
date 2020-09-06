@@ -89,6 +89,11 @@ public class TaskController {
 
         this.taskService.save(task);
     }
+    @DeleteMapping(value="/{task_id}")
+    public void delete(@PathVariable(value="task_id") String task_id) {
+        System.out.println("delete function");
+        taskService.deleteTaskById(Long.parseLong(task_id));
+    }
 
 
 }
