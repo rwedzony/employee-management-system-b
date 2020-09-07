@@ -10,13 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-public class RedirectController {
-    @GetMapping("/")
+public class StartController {
+    @GetMapping("/start")
     public String redirectToEmployees(){
         StringBuilder sb=new StringBuilder();
-        SecurityContext context = SecurityContextHolder.getContext();
         sb.append("ENTRY POINT OF THE APPLICATION");
-        sb.append("your are logged as: "+context.getAuthentication().getName());
         return sb.toString();
     }
 }

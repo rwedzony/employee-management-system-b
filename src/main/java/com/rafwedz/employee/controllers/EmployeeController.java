@@ -45,7 +45,7 @@ public class EmployeeController {
 
     @PostMapping
     public void createEmployee(@RequestBody Employee employee) {
-        System.out.println("create function");
+        employee.setPassword(passwordEncoder.encode(employee.getPassword()));
         employeeService.save(employee);
     }
 
@@ -55,8 +55,11 @@ public class EmployeeController {
         empTemp.setFirstName(employee.getFirstName());
         empTemp.setLastName(employee.getLastName());
         empTemp.setEmail(employee.getEmail());
+        empTemp.setSalary(employee.getSalary());
         empTemp.setOccupation(employee.getOccupation());
+        empTemp.setEmpAuthLevel(employee.getEmpAuthLevel());
         empTemp.setCurrentMonthWorkingHours(employee.getCurrentMonthWorkingHours());
+        empTemp.setRemainingDayOffs(employee.getRemainingDayOffs());
         employeeService.save(empTemp);
 
     }
@@ -78,6 +81,29 @@ public class EmployeeController {
         return tasks;
     }
 
+    @GetMapping("/count")
+    public int getEmployeeCount(){
+        int employeeCount ;
+        employeeCount=employeeService.getAllEmployeesCount();
+        return employeeCount;
+
+    }
+
+    @GetMapping("/wages")
+    public int getEmployeeWagesCount(){
+        int employeeWagesCount ;
+        employeeWagesCount=employeeService.getAllEmployeesWagesCount();
+        return employeeWagesCount;
+
+    }
+
+    @GetMapping("/{emp_id}/tasks/all")
+    public int getEmployeeTasksAll(@PathVariable(value="emp_id") String emp_id){
+        Employee employee=employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
+        int no_of_tasks = taskService.getEmployeeTaskAll(Long.parseLong(emp_id));
+        return no_of_tasks;
+    }
+
     @GetMapping("/{emp_id}/tasks/done")
     public int getEmployeeTasksDone(@PathVariable(value="emp_id") String emp_id){
         Employee employee=employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
@@ -95,7 +121,6 @@ public class EmployeeController {
     @PatchMapping("/{emp_id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT, reason = "Employee partial updated!")
     public void updatePatchEmployee(@RequestBody Map<String, String> updates, @PathVariable(value="emp_id") String emp_id) {
-        System.out.println("In the patch function");
         Employee empTemp = employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
         empTemp.setFirstName(updates.get("firstName"));
         empTemp.setLastName(updates.get("lastName"));

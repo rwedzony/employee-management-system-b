@@ -17,7 +17,7 @@ import java.util.Optional;
 public class TaskService {
 
     private TaskRepository taskRepository;
-    private TaskRepository employeeRepository;
+
 
     public List<Task> getAllTask(){
 
@@ -64,4 +64,17 @@ public class TaskService {
     public  int getEmployeeTaskNew(Long id) {
         return taskRepository.findEmployeeTaskNew(id);
     }
-}
+    public  int getEmployeeTaskAll(Long id) {
+        return taskRepository.findEmployeeTaskAll(id);
+    }
+
+    public int getAllTaskCounter(){return taskRepository.getAllTaskCount();}
+
+    public int getAllUnassignedTasksCount(){return taskRepository.getAllUnassignedTaskCount(); }
+    public int getAllassignedTasksCount(){return taskRepository.getAllassignedTaskCount(); }
+    public int getAllDoneTasksCount(){return taskRepository.getAllDoneTaskCount(); }
+    public int getAllNewTasksCount(){return taskRepository.getAllNewTaskCount(); }
+
+
+    }
+

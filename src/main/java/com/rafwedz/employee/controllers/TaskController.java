@@ -32,6 +32,15 @@ public class TaskController {
 
     }
 
+    @GetMapping("/count")
+    public int getAllTaskCount(){
+        int tasks;
+        tasks=taskService.getAllTaskCounter();
+        return tasks;
+    }
+
+
+
     @GetMapping("/tasksdto")
     public List<TaskDto> getTaskDto(){
         List<TaskDto> TasksDto =new ArrayList<>();
@@ -48,8 +57,40 @@ public class TaskController {
 
     }
 
+    @GetMapping("/unassigned/count")
+    public int notAssignedTaskCount(){
+        int unAssignedTasks ;
+        unAssignedTasks=taskService.getAllUnassignedTasksCount();
+        return unAssignedTasks;
+
+    }
+
+    @GetMapping("/assigned/count")
+    public int assignedTaskCount(){
+        int assignedTasks ;
+        assignedTasks=taskService.getAllassignedTasksCount();
+        return assignedTasks;
+
+    }
+
+    @GetMapping("/done")
+    public int doneTaskCount(){
+        int doneTasks ;
+        doneTasks=taskService.getAllDoneTasksCount();
+        return doneTasks;
+
+    }
+    @GetMapping("/new")
+    public int newTaskCount(){
+        int newTasks ;
+        newTasks=taskService.getAllNewTasksCount();
+        return newTasks;
+
+    }
+
+
     @GetMapping("/assigned")
-    public List<Task> AssignedTaskList(){
+    public List<Task> assignedTaskList(){
         List<Task> AssignedTasks =new ArrayList<>();
         AssignedTasks=taskService.getAllassignedTasks();
         return AssignedTasks;

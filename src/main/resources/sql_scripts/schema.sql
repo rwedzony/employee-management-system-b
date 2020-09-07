@@ -167,7 +167,7 @@ INSERT INTO task(description,
                  end_date,
                  employee_id)
 values('Clean the floor',
-       'DONE',
+       'NEW',
        '2020-08-28',
        '2020-08-29',
        2

@@ -42,4 +42,8 @@ public class EmployeeService {
     public void delete(Employee employee){
         employeeRepository.delete(employee);
     }
+
+    public int getAllEmployeesCount(){return employeeRepository.getEmployeeCount(); }
+    public int getAllEmployeesWagesCount(){return employeeRepository.getWagesCount(); }
+
 }

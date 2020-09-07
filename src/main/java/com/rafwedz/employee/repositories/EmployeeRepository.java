@@ -31,6 +31,12 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
     @Query(value = "select e.empAuthLevel from Employee e where e.email = ?1")
     String findRoleByUsername(String s);
 
+    @Query(value = "select count(e) from Employee e")
+    int getEmployeeCount();
+
+    @Query(value = "select sum(e.salary) from Employee e")
+    int getWagesCount();
+
 
 
 
