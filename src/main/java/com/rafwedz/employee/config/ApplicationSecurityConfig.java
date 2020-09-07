@@ -43,9 +43,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/auth/**")
                 .permitAll()
-                .antMatchers("/tasks/**")
-                .permitAll()
-                .antMatchers("/employees/**")
+                .antMatchers("/start/**")
                 .permitAll()
 
                 .antMatchers("/v2/api-docs",
