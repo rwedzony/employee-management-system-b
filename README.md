@@ -1,7 +1,7 @@
-# Employee Management System
+# Employees Management System
 
 ## Overview
-Employee management system is a system which intends to help and organize work in companies.This repo contains back-end part of the application.
+Employees Management System is a system which intends to help and organize work in companies. This repo contains back-end part of the application.
 Detailed app description is avaible under the front-end part:
 [link to frontend](https://github.com/rwedzony/EmployeeManagementSystem_Front)
 
