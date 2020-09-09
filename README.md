@@ -12,7 +12,7 @@ Detailed app description is avaible under the front-end part:
 + Angular Material UI Component library (mat-table, mat-buttons, mat-dialog, color theme Indigo-pink).
 + Toastr notifications
 
-### Backend: [link to Backend]
+### Backend:
 + Spring Boot
 + Spring Data JPA
 + Spring Security
