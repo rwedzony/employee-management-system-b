@@ -25,75 +25,55 @@ public class TaskController {
 
     @GetMapping("")
     public List<Task> taskList(){
-        System.out.println("get ALL TASKS");
-        List<Task> tasks =new ArrayList<>();
-        tasks=taskService.getAllTask();
-        return tasks;
-
+        return taskService.getAllTask();
     }
 
     @GetMapping("/count")
     public int getAllTaskCount(){
-        int tasks;
-        tasks=taskService.getAllTaskCounter();
-        return tasks;
+        return taskService.getAllTaskCounter();
     }
 
 
 
     @GetMapping("/tasksdto")
     public List<TaskDto> getTaskDto(){
-        List<TaskDto> TasksDto =new ArrayList<>();
-        TasksDto=taskService.getTasksDtos();
-        return TasksDto;
+        return taskService.getTasksDtos();
 
     }
 
     @GetMapping("/unassigned")
     public List<Task> notAssignedTaskList(){
-        List<Task> unAssignedTasks =new ArrayList<>();
-        unAssignedTasks=taskService.getAllUnassignedTasks();
-        return unAssignedTasks;
+        return taskService.getAllUnassignedTasks();
 
     }
 
     @GetMapping("/unassigned/count")
     public int notAssignedTaskCount(){
-        int unAssignedTasks ;
-        unAssignedTasks=taskService.getAllUnassignedTasksCount();
-        return unAssignedTasks;
+        return taskService.getAllUnassignedTasksCount();
 
     }
 
     @GetMapping("/assigned/count")
     public int assignedTaskCount(){
-        int assignedTasks ;
-        assignedTasks=taskService.getAllassignedTasksCount();
-        return assignedTasks;
+        return taskService.getAllassignedTasksCount();
 
     }
 
     @GetMapping("/done")
     public int doneTaskCount(){
-        int doneTasks ;
-        doneTasks=taskService.getAllDoneTasksCount();
-        return doneTasks;
+        return taskService.getAllDoneTasksCount();
 
     }
     @GetMapping("/new")
     public int newTaskCount(){
-        int newTasks ;
-        newTasks=taskService.getAllNewTasksCount();
-        return newTasks;
+        return taskService.getAllNewTasksCount();
 
     }
 
 
     @GetMapping("/assigned")
     public List<Task> assignedTaskList(){
-        List<Task> AssignedTasks =new ArrayList<>();
-        AssignedTasks=taskService.getAllassignedTasks();
-        return AssignedTasks;
+        return taskService.getAllassignedTasks();
 
     }
 
@@ -139,7 +119,6 @@ public class TaskController {
     }
     @DeleteMapping(value="/{task_id}")
     public void delete(@PathVariable(value="task_id") String task_id) {
-        System.out.println("delete function");
         taskService.deleteTaskById(Long.parseLong(task_id));
     }
 
