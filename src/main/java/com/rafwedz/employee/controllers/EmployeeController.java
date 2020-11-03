@@ -31,9 +31,7 @@ public class EmployeeController {
 
     @GetMapping("")
     public List<Employee> employeeList() {
-        List<Employee> employees =new ArrayList<>();
-        employees=employeeService.getAllEmployees();
-        return employees;
+        return employeeService.getAllEmployees();
     }
 
 
@@ -75,47 +73,34 @@ public class EmployeeController {
 
     @GetMapping("/{emp_id}/tasks")
     public List<Task> getEmployeeTasks(@PathVariable(value="emp_id") String emp_id){
-        Employee employee=employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
-        List<Task> tasks = taskService.getEmployeeTask(Long.parseLong(emp_id)).orElse(new ArrayList<>());
-
-        return tasks;
+        return taskService.getEmployeeTask(Long.parseLong(emp_id)).orElse(new ArrayList<>());
     }
 
     @GetMapping("/count")
     public int getEmployeeCount(){
-        int employeeCount ;
-        employeeCount=employeeService.getAllEmployeesCount();
-        return employeeCount;
+        return employeeService.getAllEmployeesCount();
 
     }
 
     @GetMapping("/wages")
     public int getEmployeeWagesCount(){
-        int employeeWagesCount ;
-        employeeWagesCount=employeeService.getAllEmployeesWagesCount();
-        return employeeWagesCount;
+        return employeeService.getAllEmployeesWagesCount();
 
     }
 
     @GetMapping("/{emp_id}/tasks/all")
     public int getEmployeeTasksAll(@PathVariable(value="emp_id") String emp_id){
-        Employee employee=employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
-        int no_of_tasks = taskService.getEmployeeTaskAll(Long.parseLong(emp_id));
-        return no_of_tasks;
+        return taskService.getEmployeeTaskAll(Long.parseLong(emp_id));
     }
 
     @GetMapping("/{emp_id}/tasks/done")
     public int getEmployeeTasksDone(@PathVariable(value="emp_id") String emp_id){
-        Employee employee=employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
-        int no_of_tasks = taskService.getEmployeeTaskDone(Long.parseLong(emp_id));
-        return no_of_tasks;
+        return taskService.getEmployeeTaskDone(Long.parseLong(emp_id));
     }
 
     @GetMapping("/{emp_id}/tasks/new")
     public int getEmployeeTasksNew(@PathVariable(value="emp_id") String emp_id){
-        Employee employee=employeeService.getEmployeeById(Long.parseLong(emp_id)).orElseThrow(EntityExistsException::new);
-        int no_of_tasks = taskService.getEmployeeTaskNew(Long.parseLong(emp_id));
-        return no_of_tasks;
+        return taskService.getEmployeeTaskNew(Long.parseLong(emp_id));
     }
 
     @PatchMapping("/{emp_id}")
