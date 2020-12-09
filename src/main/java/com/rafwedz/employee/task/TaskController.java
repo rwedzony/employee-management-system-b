@@ -1,16 +1,12 @@
-package com.rafwedz.employee.controllers;
+package com.rafwedz.employee.task;
 
-import com.rafwedz.employee.dto.TaskDto;
-import com.rafwedz.employee.models.Employee;
-import com.rafwedz.employee.models.Task;
-import com.rafwedz.employee.services.EmployeeService;
-import com.rafwedz.employee.services.TaskService;
+import com.rafwedz.employee.employee.Employee;
+import com.rafwedz.employee.employee.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityExistsException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

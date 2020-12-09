@@ -1,33 +1,54 @@
-package com.rafwedz.employee.config;
+/**
+ * package that contains config utils
+ */
+package com.rafwedz.employee.security;
 
 import com.rafwedz.employee.services.CustomUserDetailsService;
-import com.rafwedz.employee.utils.JwtRequestFilter;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.rafwedz.employee.jwt.JwtRequestFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 
 @Configuration
 @EnableWebSecurity
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
+    /**
+     * CustomUserDetailsService.
+     */
+    private final CustomUserDetailsService customUserDetailsService;
 
-    private final CustomUserDetailsService userDetailsService;
-
-    @Autowired
+    /**
+     * JwtRequestFilter.
+     */
     private  JwtRequestFilter jwtRequestFilter;
 
+
+    /**
+     * @param cUserDetailService
+     * @param jRequestFilter
+     */
+    public ApplicationSecurityConfig(final CustomUserDetailsService
+                                             cUserDetailService,
+                                     final JwtRequestFilter jRequestFilter) {
+        this.customUserDetailsService = cUserDetailService;
+        this.jwtRequestFilter = jRequestFilter;
+
+    }
+
+    /**
+     *
+     * @return AuthenticationManager
+     * @throws Exception
+     */
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -35,7 +56,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected final void configure(final HttpSecurity http) throws Exception {
         http
                 .cors()
                 .and()
@@ -58,21 +79,23 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtRequestFilter,
+                UsernamePasswordAuthenticationFilter.class);
 
-    }
-
-    public ApplicationSecurityConfig(CustomUserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
     }
 
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+    protected final void configure(
+            final AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(customUserDetailsService);
 
     }
 
+    /***
+     *
+     * @return BcryptPasswordEncoder Bean
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

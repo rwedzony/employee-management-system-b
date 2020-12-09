@@ -1,6 +1,6 @@
-package com.rafwedz.employee.repositories;
+package com.rafwedz.employee.employee;
 
-import com.rafwedz.employee.models.Employee;
+import com.rafwedz.employee.employee.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

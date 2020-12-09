@@ -1,10 +1,8 @@
-package com.rafwedz.employee.controllers;
+package com.rafwedz.employee.employee;
 
 
-import com.rafwedz.employee.models.Employee;
-import com.rafwedz.employee.models.Task;
-import com.rafwedz.employee.services.EmployeeService;
-import com.rafwedz.employee.services.TaskService;
+import com.rafwedz.employee.task.Task;
+import com.rafwedz.employee.task.TaskService;
 import lombok.RequiredArgsConstructor;
 
 

@@ -1,9 +1,5 @@
-package com.rafwedz.employee.controllers;
+package com.rafwedz.employee.login;
 
-import com.rafwedz.employee.dto.AuthenticationResponse;
-import com.rafwedz.employee.dto.LoginRequest;
-import com.rafwedz.employee.dto.SimpleResponse;
-import com.rafwedz.employee.services.AuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

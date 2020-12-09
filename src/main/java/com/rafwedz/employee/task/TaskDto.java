@@ -1,4 +1,4 @@
-package com.rafwedz.employee.dto;
+package com.rafwedz.employee.task;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.rafwedz.employee.dto;
+package com.rafwedz.employee.login;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

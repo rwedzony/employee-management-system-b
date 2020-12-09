@@ -1,6 +1,5 @@
-package com.rafwedz.employee.config;
+package com.rafwedz.employee.swagger;
 
-import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;

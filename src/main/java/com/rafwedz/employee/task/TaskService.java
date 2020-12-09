@@ -1,9 +1,5 @@
-package com.rafwedz.employee.services;
+package com.rafwedz.employee.task;
 
-import com.rafwedz.employee.dto.TaskDto;
-import com.rafwedz.employee.models.Employee;
-import com.rafwedz.employee.models.Task;
-import com.rafwedz.employee.repositories.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

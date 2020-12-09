@@ -1,4 +1,4 @@
-package com.rafwedz.employee.services;
+package com.rafwedz.employee.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

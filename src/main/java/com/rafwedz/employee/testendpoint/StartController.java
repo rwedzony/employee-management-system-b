@@ -1,4 +1,4 @@
-package com.rafwedz.employee.controllers;
+package com.rafwedz.employee.testendpoint;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;

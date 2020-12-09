@@ -1,6 +1,7 @@
-package com.rafwedz.employee.models;
+package com.rafwedz.employee.employee;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.rafwedz.employee.task.Task;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

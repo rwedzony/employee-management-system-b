@@ -1,8 +1,8 @@
-package com.rafwedz.employee.services;
+package com.rafwedz.employee.employee;
 
 
-import com.rafwedz.employee.models.Employee;
-import com.rafwedz.employee.repositories.EmployeeRepository;
+import com.rafwedz.employee.employee.Employee;
+import com.rafwedz.employee.employee.EmployeeRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 

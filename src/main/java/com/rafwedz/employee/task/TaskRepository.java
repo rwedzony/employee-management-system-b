@@ -1,7 +1,6 @@
-package com.rafwedz.employee.repositories;
+package com.rafwedz.employee.task;
 
-import com.rafwedz.employee.models.Employee;
-import com.rafwedz.employee.models.Task;
+import com.rafwedz.employee.task.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

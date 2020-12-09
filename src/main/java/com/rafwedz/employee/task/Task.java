@@ -1,9 +1,9 @@
-package com.rafwedz.employee.models;
+package com.rafwedz.employee.task;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.rafwedz.employee.employee.Employee;
 import com.rafwedz.employee.utils.DateHandler;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +12,6 @@ import lombok.NonNull;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Set;
 
 
 @Entity
