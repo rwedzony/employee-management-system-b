@@ -17,5 +17,5 @@ Detailed app description is avaible under the front-end part:
 + Spring Data JPA
 + Spring Security
 + PosgreSQL database
-+ API secured by Spring Security and JWT generated token.
-+ API docummented by Swagger
++ Spring Security and JWT generated token.
++ Open Api (Swagger)
