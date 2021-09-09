@@ -20,61 +20,59 @@ public class TaskController {
     private final EmployeeService employeeService;
 
     @GetMapping("")
-    public List<Task> taskList(){
+    public List<Task> taskList() {
         return taskService.getAllTask();
     }
 
     @GetMapping("/count")
-    public int getAllTaskCount(){
+    public int getAllTaskCount() {
         return taskService.getAllTaskCounter();
     }
 
-
-
     @GetMapping("/tasksdto")
-    public List<TaskDto> getTaskDto(){
+    public List<TaskDto> getTaskDto() {
         return taskService.getTasksDtos();
 
     }
 
     @GetMapping("/unassigned")
-    public List<Task> notAssignedTaskList(){
+    public List<Task> notAssignedTaskList() {
         return taskService.getAllUnassignedTasks();
 
     }
 
     @GetMapping("/unassigned/count")
-    public int notAssignedTaskCount(){
+    public int notAssignedTaskCount() {
         return taskService.getAllUnassignedTasksCount();
 
     }
 
     @GetMapping("/assigned/count")
-    public int assignedTaskCount(){
+    public int assignedTaskCount() {
         return taskService.getAllassignedTasksCount();
 
     }
 
     @GetMapping("/done")
-    public int doneTaskCount(){
+    public int doneTaskCount() {
         return taskService.getAllDoneTasksCount();
 
     }
+
     @GetMapping("/new")
-    public int newTaskCount(){
+    public int newTaskCount() {
         return taskService.getAllNewTasksCount();
 
     }
 
-
     @GetMapping("/assigned")
-    public List<Task> assignedTaskList(){
+    public List<Task> assignedTaskList() {
         return taskService.getAllassignedTasks();
 
     }
 
     @GetMapping("/{task_id}")
-    public Task getTaskById(@PathVariable(value= "task_id") String task_id){
+    public Task getTaskById(@PathVariable(value = "task_id") String task_id) {
         return taskService.getTaskById(Long.parseLong(task_id)).orElseThrow(EntityExistsException::new);
     }
 
@@ -82,7 +80,6 @@ public class TaskController {
     public void createTask(@RequestBody Task task) {
         taskService.save(task);
     }
-
 
     @PutMapping(value = "/{task_id}")
     public void update(@PathVariable(value = "task_id") String task_id, @RequestBody Task task) {
@@ -97,26 +94,24 @@ public class TaskController {
 
     @PatchMapping("/{task_id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT, reason = "Task partial updated!")
-    public void updateTask(@RequestBody Map<String, String> updates, @PathVariable(value="task_id") String task_id) {
-        Task task=taskService.getTaskById(Long.parseLong(task_id)).orElseThrow(EntityExistsException::new);
+    public void updateTask(@RequestBody Map<String, String> updates, @PathVariable(value = "task_id") String task_id) {
+        Task task = taskService.getTaskById(Long.parseLong(task_id)).orElseThrow(EntityExistsException::new);
 
-        if(updates.containsKey("status")){
+        if (updates.containsKey("status")) {
             task.setStatus(updates.get("status"));
         }
-        if(updates.containsKey("assigned")){
-           task.setEmployee(null);
+        if (updates.containsKey("assigned")) {
+            task.setEmployee(null);
         }
-        if(updates.containsKey("employeeId")){
+        if (updates.containsKey("employeeId")) {
             Employee employee = employeeService.getEmployeeById(Long.parseLong(updates.get("employeeId"))).orElseThrow(EntityExistsException::new);
             task.setEmployee(employee);
         }
-
         this.taskService.save(task);
     }
-    @DeleteMapping(value="/{task_id}")
-    public void delete(@PathVariable(value="task_id") String task_id) {
+
+    @DeleteMapping(value = "/{task_id}")
+    public void delete(@PathVariable(value = "task_id") String task_id) {
         taskService.deleteTaskById(Long.parseLong(task_id));
     }
-
-
 }
