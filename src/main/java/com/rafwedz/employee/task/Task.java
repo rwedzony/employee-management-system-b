@@ -43,5 +43,4 @@ public class Task {
     @ManyToOne()
     @JoinColumn(name="employee_id")
     private Employee employee;
-
 }
