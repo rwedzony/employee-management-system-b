@@ -23,6 +23,7 @@ public class TaskService {
     public List<Task> getAllUnassignedTasks(){
         return taskRepository.findAllUnassignedTasks();
     }
+
     public List<Task> getAllassignedTasks(){
         return taskRepository.findAllassignedTasks();
     }
@@ -34,6 +35,7 @@ public class TaskService {
     public Optional<List<Task>> getEmployeeTask(Long id){
         return taskRepository.findEmployeeTask(id);
     };
+
     public void save(final Task task){taskRepository.save(task);
     }
 
@@ -57,9 +59,11 @@ public class TaskService {
     public  int getEmployeeTaskDone(Long id) {
         return taskRepository.findEmployeeTaskDone(id);
     }
+
     public  int getEmployeeTaskNew(Long id) {
         return taskRepository.findEmployeeTaskNew(id);
     }
+
     public  int getEmployeeTaskAll(Long id) {
         return taskRepository.findEmployeeTaskAll(id);
     }
@@ -67,10 +71,11 @@ public class TaskService {
     public int getAllTaskCounter(){return taskRepository.getAllTaskCount();}
 
     public int getAllUnassignedTasksCount(){return taskRepository.getAllUnassignedTaskCount(); }
+
     public int getAllassignedTasksCount(){return taskRepository.getAllassignedTaskCount(); }
+
     public int getAllDoneTasksCount(){return taskRepository.getAllDoneTaskCount(); }
+
     public int getAllNewTasksCount(){return taskRepository.getAllNewTaskCount(); }
-
-
     }
 

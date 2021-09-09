@@ -18,5 +18,4 @@ public class TaskDto {
     private LocalDate endDate;
     private String employeeFirstName;
     private String employeeLastName;
-
 }
