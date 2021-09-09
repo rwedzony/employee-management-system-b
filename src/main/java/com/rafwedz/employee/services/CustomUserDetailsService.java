@@ -16,19 +16,16 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private final EmployeeRepository employeeRepository;
 
-
     public CustomUserDetailsService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Employee employee=employeeRepository.findUserByUsername(username)
-                .orElseThrow(()->new UsernameNotFoundException("User not Found"));
-        return new User(employee.getEmail(),employee.getPassword(),
+        Employee employee = employeeRepository.findUserByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
+        return new User(employee.getEmail(), employee.getPassword(),
                 Collections.singleton(new SimpleGrantedAuthority(employeeRepository.findRoleByUsername(username))));
-
-
 
     }
 }
