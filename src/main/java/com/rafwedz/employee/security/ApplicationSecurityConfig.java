@@ -21,21 +21,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
-    /**
-     * CustomUserDetailsService.
-     */
+
     private final CustomUserDetailsService customUserDetailsService;
+    private JwtRequestFilter jwtRequestFilter;
 
-    /**
-     * JwtRequestFilter.
-     */
-    private  JwtRequestFilter jwtRequestFilter;
-
-
-    /**
-     * @param cUserDetailService
-     * @param jRequestFilter
-     */
     public ApplicationSecurityConfig(final CustomUserDetailsService
                                              cUserDetailService,
                                      final JwtRequestFilter jRequestFilter) {
@@ -44,11 +33,6 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    /**
-     *
-     * @return AuthenticationManager
-     * @throws Exception
-     */
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -66,7 +50,6 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/start/**")
                 .permitAll()
-
                 .antMatchers("/v2/api-docs",
                         "/configuration/ui",
                         "/swagger-resources/**",
@@ -79,11 +62,11 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
         http.addFilterBefore(jwtRequestFilter,
                 UsernamePasswordAuthenticationFilter.class);
 
     }
-
 
     @Override
     protected final void configure(
@@ -92,10 +75,6 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    /***
-     *
-     * @return BcryptPasswordEncoder Bean
-     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
