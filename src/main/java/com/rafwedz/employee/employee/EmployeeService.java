@@ -21,15 +21,12 @@ public class EmployeeService {
         return employeeRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
-
     public long count(){ return employeeRepository.count();
     }
 
     public void save(final Employee employee){
         employeeRepository.save(employee);
     }
-
-
 
     public Optional<Employee> getEmployeeById(Long emp_id){
        return employeeRepository.findById(emp_id);
@@ -44,6 +41,7 @@ public class EmployeeService {
     }
 
     public int getAllEmployeesCount(){return employeeRepository.getEmployeeCount(); }
+
     public int getAllEmployeesWagesCount(){return employeeRepository.getWagesCount(); }
 
 }
