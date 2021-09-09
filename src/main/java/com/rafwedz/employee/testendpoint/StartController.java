@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin
 public class StartController {
+
     @GetMapping("/start")
     public String redirectToEmployees(){
         StringBuilder sb=new StringBuilder();
