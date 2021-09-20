@@ -40,18 +40,18 @@ public class Employee {
     @OneToMany(mappedBy = "employee")
     private Set<Task> tasks;
 
-    public Employee(Employee employee){
-        this.id=employee.getId();
-        this.firstName=employee.getFirstName();
-        this.lastName=employee.getLastName();
-        this.email=employee.getEmail();
-        this.password=employee.getPassword();
-        this.salary=employee.getSalary();
-        this.occupation =employee.getOccupation();
-        this.currentMonthWorkingHours=employee.getCurrentMonthWorkingHours();
-        this.empAuthLevel=employee.getEmpAuthLevel();
-        this.remainingDayOffs=employee.getRemainingDayOffs();
-        this.tasks=employee.getTasks();
+    public Employee(Employee employee) {
+        this.id = employee.getId();
+        this.firstName = employee.getFirstName();
+        this.lastName = employee.getLastName();
+        this.email = employee.getEmail();
+        this.password = employee.getPassword();
+        this.salary = employee.getSalary();
+        this.occupation = employee.getOccupation();
+        this.currentMonthWorkingHours = employee.getCurrentMonthWorkingHours();
+        this.empAuthLevel = employee.getEmpAuthLevel();
+        this.remainingDayOffs = employee.getRemainingDayOffs();
+        this.tasks = employee.getTasks();
     }
 
 }
