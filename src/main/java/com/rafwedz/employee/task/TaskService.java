@@ -14,7 +14,6 @@ public class TaskService {
 
     private TaskRepository taskRepository;
 
-
     public List<Task> getAllTask(){
 
         return taskRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
