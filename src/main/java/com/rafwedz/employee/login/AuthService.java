@@ -24,6 +24,7 @@ public class AuthService {
     private final JwtUtil jwtutil;
 
     public ResponseEntity<?> login(LoginRequest loginRequest) throws Exception {
+
         try {
             Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
                     loginRequest.getPassword()));
@@ -34,6 +35,7 @@ public class AuthService {
                 .loadUserByUsername(loginRequest.getUsername());
 
         final String jwt = jwtutil.generateToken(userDetails);
+
         String loggedUserName = loginRequest.getUsername();
 
         return ResponseEntity.ok(new AuthenticationResponse(
