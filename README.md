@@ -9,7 +9,7 @@ Detailed app description is available under the front-end part:
 ## Tech stack:
 ### Frontend: 
 + Angular CLI v. 10
-+ Angular Material UI Component library (mat-table, mat-buttons, mat-dialog, color theme Indigo-pink).
++ Angular Material UI Component library
 + Toastr notifications
 
 ### Backend:
