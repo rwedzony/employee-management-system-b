@@ -8,7 +8,7 @@ Detailed app description is available under the front-end part:
 
 ## Tech stack:
 ### Frontend: 
-+ Angular CLI v. 10
++ Angular
 + Angular Material UI
 + Toastr notifications
 
