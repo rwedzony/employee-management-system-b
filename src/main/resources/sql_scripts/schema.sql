@@ -1,14 +1,5 @@
---Delete Tables to have new fresh data (It need to be done in particular ORDER!)
-
--- first delete TASK table
 DROP TABLE IF EXISTS task;
-
--- THAN delete employee table
 DROP TABLE IF EXISTS employee;
-
-
-
--- CREATE TYPE auth_level AS ENUM ('ADMIN', 'USER');
 
 CREATE TABLE employee
 (
@@ -33,10 +24,6 @@ CREATE TABLE task
     end_date date  NOT NULL,
     employee_id integer references employee(id)
 );
-
-
-
--- fill employee table with sample data
 
 Insert into employee (first_name,
                       last_name,
