@@ -19,3 +19,8 @@ Detailed app description is available under the front-end part:
 + PosgreSQL database
 + Spring Security and JWT.
 + Open Api (Swagger)
+
+## TODO
+
+1. Add Tests
+2. Add Vacation planning calendar endpoints
