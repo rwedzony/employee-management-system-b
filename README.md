@@ -25,3 +25,4 @@ Detailed app description is available under the front-end part:
 1. Add Tests
 2. Add Vacation planning calendar endpoints
 3. Refactor Code
+4. Delete native queries 
