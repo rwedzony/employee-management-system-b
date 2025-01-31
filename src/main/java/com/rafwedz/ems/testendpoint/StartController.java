@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 public class StartController {
 
-    @GetMapping("/start")
+    @GetMapping("/start1")
     public String redirectToEmployees(){
         StringBuilder sb=new StringBuilder();
         sb.append("ENTRY POINT OF THE APPLICATION");
